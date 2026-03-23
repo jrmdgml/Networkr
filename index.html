@@ -1948,6 +1948,60 @@ function renderCalendar() {
     <div style="display:flex;align-items:center;gap:5px"><div class="cal-dot cal-dot-reminder" style="width:10px;height:10px"></div> Upcoming reminder / birthday alert</div>
   </div>`;
 
+  // ---- Upcoming 30-day list ----
+  const pad2 = n => String(n).padStart(2,'0');
+  const today = new Date(); today.setHours(0,0,0,0);
+  const todayTs = today.getTime();
+
+  // Collect reminder + birthday events for the next 30 days (may span two years)
+  const upcomingMap = {};
+  [today.getFullYear(), today.getFullYear()+1].forEach(y => {
+    const evs = buildCalendarEvents(y);
+    Object.entries(evs).forEach(([dateStr, evList]) => {
+      const d = new Date(dateStr+'T00:00:00');
+      const diff = Math.round((d.getTime()-todayTs)/86400000);
+      if (diff >= 0 && diff <= 30) {
+        const filtered = evList.filter(e => e.type === 'reminder' || e.type === 'birthday');
+        if (filtered.length) upcomingMap[dateStr] = (upcomingMap[dateStr]||[]).concat(filtered);
+      }
+    });
+  });
+
+  const upcomingDates = Object.keys(upcomingMap).sort();
+  let upcomingHTML = '';
+  if (!upcomingDates.length) {
+    upcomingHTML = `<p style="font-size:13.5px;color:var(--text-muted)">Nothing due in the next 30 days.</p>`;
+  } else {
+    upcomingHTML = upcomingDates.map(dateStr => {
+      const d = new Date(dateStr+'T00:00:00');
+      const diff = Math.round((d.getTime()-todayTs)/86400000);
+      const dayLabel = diff === 0 ? 'Today' : diff === 1 ? 'Tomorrow'
+        : d.toLocaleDateString('en-GB', {weekday:'short', day:'numeric', month:'short'});
+      const relLabel = diff === 0 ? '' : diff === 1 ? '' : `<span style="color:var(--text-muted);font-size:12px;margin-left:6px">in ${diff}d</span>`;
+      const rowsInner = upcomingMap[dateStr].map(ev => {
+        const dotColor = ev.type==='birthday' ? 'var(--purple)' : 'var(--warning)';
+        const cats = (ev.contact.categories||[]).slice(0,2).map(cat=>`<span class="cat-badge ${ccClass(cat)}">${esc(cat)}</span>`).join(' ');
+        return `<div style="display:flex;align-items:center;gap:10px;padding:8px 12px;border-bottom:1px solid var(--border);cursor:pointer" onclick="openDetail('${ev.contact.id}')" onmouseenter="this.style.background='var(--surface2)'" onmouseleave="this.style.background=''">
+          <div style="width:8px;height:8px;border-radius:50%;background:${dotColor};flex-shrink:0"></div>
+          <div class="avatar ${avClass(ev.contact.name)}" style="width:26px;height:26px;font-size:10px;flex-shrink:0">${esc(initials(ev.contact.name))}</div>
+          <div style="flex:1;min-width:0">
+            <span style="font-weight:600;font-size:13.5px">${esc(ev.contact.name)}</span>
+            <span style="font-size:12px;color:var(--text-muted);margin-left:8px">${esc(ev.label.replace(/^⏰ /,'').replace(/^🎂 /,''))}</span>
+          </div>
+          <div style="display:flex;gap:4px;flex-shrink:0">${cats}</div>
+          <button class="btn btn-primary btn-sm" style="flex-shrink:0" onclick="event.stopPropagation();openLogInteraction('${ev.contact.id}')">Log</button>
+        </div>`;
+      }).join('');
+      return `<div style="margin-bottom:10px">
+        <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--text-muted);padding:6px 12px;background:var(--surface2);border-radius:6px 6px 0 0;display:flex;align-items:center">
+          ${esc(dayLabel)}${relLabel}
+          <span style="margin-left:auto;font-size:11px;font-weight:500">${d.toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'})}</span>
+        </div>
+        <div style="background:var(--surface);border:1px solid var(--border);border-top:none;border-radius:0 0 6px 6px">${rowsInner}</div>
+      </div>`;
+    }).join('');
+  }
+
   document.getElementById('main').innerHTML = `
     <div class="cal-year-nav">
       <button class="btn btn-secondary btn-sm" onclick="state.calendarYear--;renderCalendar()">&#8592;</button>
@@ -1957,6 +2011,13 @@ function renderCalendar() {
     </div>
     ${legend}
     <div class="cal-grid-months">${monthsHTML}</div>
+    <div style="margin-top:32px">
+      <div style="font-size:16px;font-weight:600;margin-bottom:14px">
+        Due in the next 30 days
+        <span style="font-size:13px;font-weight:400;color:var(--text-muted);margin-left:8px">${upcomingDates.length} day${upcomingDates.length!==1?'s':''} with events</span>
+      </div>
+      ${upcomingHTML}
+    </div>
   `;
 }
 
