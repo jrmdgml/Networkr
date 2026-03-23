@@ -290,6 +290,19 @@ textarea { resize: vertical; min-height: 76px; line-height: 1.5; }
 .cc4{background:#fff1f2;color:#e11d48} .cc5{background:#f0fdfa;color:#0d9488}
 .cc6{background:#fefce8;color:#ca8a04} .cc7{background:#f5f3ff;color:#7c3aed}
 
+/* Inner tab bar (used by Overdue page) */
+.inner-tabs { display: flex; gap: 4px; margin-bottom: 20px; border-bottom: 2px solid var(--border); padding-bottom: 0; }
+.inner-tab {
+  padding: 7px 16px; border-radius: var(--radius) var(--radius) 0 0;
+  border: none; background: none; cursor: pointer; font-size: 14px;
+  font-weight: 500; color: var(--text-muted); transition: all .15s;
+  position: relative; bottom: -2px; border-bottom: 2px solid transparent;
+}
+.inner-tab:hover { color: var(--text); background: var(--surface2); }
+.inner-tab.active { color: var(--accent); border-bottom: 2px solid var(--accent); font-weight: 600; }
+.inner-tab .count { font-size: 11px; padding: 1px 6px; border-radius: 10px; background: var(--surface2); margin-left: 5px; }
+.inner-tab.active .count { background: #dbeafe; color: var(--accent); }
+
 /* Incomplete tab */
 .missing-badge { font-size: 11px; padding: 2px 7px; border-radius: 20px; background: #fef2f2; color: var(--danger); font-weight: 500; display: inline-block; }
 .completeness-bar-wrap { background: var(--surface2); border-radius: 4px; height: 6px; overflow: hidden; display: inline-block; width: 100px; vertical-align: middle; margin-left: 6px; }
@@ -370,6 +383,7 @@ textarea { resize: vertical; min-height: 76px; line-height: 1.5; }
   <nav>
     <button id="nav-dashboard" onclick="setView('dashboard')">Dashboard</button>
     <button id="nav-contacts" onclick="setView('contacts')">Contacts</button>
+    <button id="nav-overdue" onclick="setView('overdue')">Overdue</button>
     <button id="nav-incomplete" onclick="setView('incomplete')">Incomplete</button>
     <button id="nav-calendar" onclick="setView('calendar')">Calendar</button>
   </nav>
@@ -406,7 +420,8 @@ let state = {
   filterType: null,   // 'category' | 'country' | 'industry' | 'tag'
   filterValue: null,
   search: '',
-  calendarYear: new Date().getFullYear()
+  calendarYear: new Date().getFullYear(),
+  overdueTab: 'overdue'   // 'overdue' | 'never'
 };
 
 let _sidebarCats       = [];
@@ -550,6 +565,7 @@ const INTERACTION_TYPES = [
   {id:'messenger',    label:'Messenger',       icon:'💙'},
   {id:'instagram',    label:'Instagram DM',    icon:'📸'},
   {id:'email',        label:'Email',           icon:'📧'},
+  {id:'f2f',          label:'Face to Face',    icon:'🤝'},
   {id:'coffee',       label:'Coffee / Meeting',icon:'☕'},
   {id:'linkedin',     label:'LinkedIn',        icon:'💼'},
   {id:'gift',         label:'Gift',            icon:'🎁'},
@@ -727,6 +743,7 @@ function render() {
   renderSidebar();
   if      (state.view==='dashboard')  renderDashboard();
   else if (state.view==='contacts')   renderContacts();
+  else if (state.view==='overdue')    renderOverdue();
   else if (state.view==='incomplete') renderIncomplete();
   else if (state.view==='calendar')   renderCalendar();
 }
@@ -1052,6 +1069,23 @@ function openDetail(id) {
               <div class="detail-section-title">Interaction History (${(c.interactions||[]).length})</div>
               <div class="interaction-list">${interactionsHTML}</div>
             </div>
+            ${(()=>{
+              const nd = nextDueDate(c);
+              if (!nd || !c.frequency) return '';
+              const days = daysUntilDue(c);
+              const isOverdue = days < 0;
+              const color = isOverdue ? 'var(--danger)' : (days <= 30 ? 'var(--warning)' : 'var(--success)');
+              const label = isOverdue
+                ? `${Math.abs(days)} day${Math.abs(days)!==1?'s':''} overdue`
+                : days === 0 ? 'Due today!' : `in ${days} day${days!==1?'s':''}`;
+              return `<div class="detail-section" style="margin-top:14px">
+                <div class="detail-section-title">Next Interaction Due</div>
+                <div style="padding:12px 14px;background:var(--surface2);border-radius:8px;border-left:3px solid ${color}">
+                  <div style="font-size:18px;font-weight:700;color:${color}">${nd.toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'})}</div>
+                  <div style="font-size:12.5px;color:var(--text-muted);margin-top:2px">${esc(freqLabel(c.frequency))} · <span style="color:${color};font-weight:600">${label}</span></div>
+                </div>
+              </div>`;
+            })()}
           </div>
         </div>
       </div>
@@ -1648,6 +1682,87 @@ async function runImport() {
 
   await saveDB(); closeModal(); render();
   showToast(`Imported: ${added} added, ${updated} updated, ${skipped} skipped`);
+}
+
+// ============================================================
+// OVERDUE TAB
+// ============================================================
+function renderOverdue() {
+  const overdue = db.contacts
+    .filter(c => contactStatus(c) === 'overdue' && lastInteractionDate(c) !== null)
+    .sort((a, b) => daysUntilDue(a) - daysUntilDue(b));   // most overdue first
+
+  const neverContacted = db.contacts
+    .filter(c => c.frequency && !lastInteractionDate(c))
+    .sort((a, b) => a.name.localeCompare(b.name));
+
+  const tab = state.overdueTab;
+
+  const tabBar = `<div class="inner-tabs">
+    <button class="inner-tab ${tab==='overdue'?'active':''}" onclick="state.overdueTab='overdue';renderOverdue()">
+      Overdue <span class="count">${overdue.length}</span>
+    </button>
+    <button class="inner-tab ${tab==='never'?'active':''}" onclick="state.overdueTab='never';renderOverdue()">
+      Never Contacted <span class="count">${neverContacted.length}</span>
+    </button>
+  </div>`;
+
+  const list = tab === 'overdue' ? overdue : neverContacted;
+
+  let rows = '';
+  if (!list.length) {
+    rows = `<div class="empty-state">
+      <div class="empty-icon">${tab==='overdue'?'🎉':'👋'}</div>
+      <h3>${tab==='overdue'?'All caught up!':'No contacts without interaction'}</h3>
+      <p>${tab==='overdue'?'No overdue interactions right now.':'Every contact with a reminder has been contacted at least once.'}</p>
+    </div>`;
+  } else {
+    const rowsHTML = list.map(c => {
+      const due = daysUntilDue(c);
+      const lastI = (c.interactions||[]).slice(-1)[0];
+      const cats = (c.categories||[]).slice(0,2).map(cat=>`<span class="cat-badge ${ccClass(cat)}">${esc(cat)}</span>`).join(' ');
+      const countries = (c.country||[]).map(esc).join(', ');
+
+      let dueCell;
+      if (tab === 'overdue') {
+        const absD = Math.abs(due);
+        dueCell = `<span style="color:var(--danger);font-weight:600">${absD} day${absD!==1?'s':''} overdue</span>`;
+      } else {
+        dueCell = `<span style="color:var(--text-muted)">—</span>`;
+      }
+
+      return `<tr onclick="openDetail('${c.id}')">
+        <td>
+          <div style="display:flex;align-items:center;gap:8px">
+            <div class="avatar ${avClass(c.name)}" style="width:30px;height:30px;font-size:11px;flex-shrink:0">${esc(initials(c.name))}</div>
+            <div>
+              <div style="font-weight:600">${esc(c.name)}</div>
+              ${countries?`<div style="font-size:12px;color:var(--text-muted)">${countries}</div>`:''}
+            </div>
+          </div>
+        </td>
+        <td>${cats||'<span style="color:var(--text-muted);font-size:12px">—</span>'}</td>
+        <td><span style="font-size:12.5px;color:var(--text-muted)">${lastI?`${itype(lastI.type).icon} ${fmtDate(lastI.date)}`:'Never'}</span></td>
+        <td><span style="font-size:12.5px;color:var(--text-muted)">${esc(freqLabel(c.frequency))}</span></td>
+        <td>${dueCell}</td>
+        <td style="text-align:right">
+          <button class="btn btn-primary btn-sm" onclick="event.stopPropagation();openLogInteraction('${c.id}')">Log</button>
+        </td>
+      </tr>`;
+    }).join('');
+
+    rows = `<div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden">
+      <table class="incomplete-table">
+        <thead><tr>
+          <th>Name</th><th>Categories</th><th>Last interaction</th><th>Frequency</th>
+          <th>${tab==='overdue'?'Overdue by':''}</th><th></th>
+        </tr></thead>
+        <tbody>${rowsHTML}</tbody>
+      </table>
+    </div>`;
+  }
+
+  document.getElementById('main').innerHTML = tabBar + rows;
 }
 
 // ============================================================
