@@ -6,7 +6,12 @@
       "email": "",
       "phone": "",
       "birthday": "1990-12-05",
-      "country": "Belgium",
+      "celebrateBirthday": false,
+      "markedComplete": false,
+      "address": "",
+      "country": [
+        "Belgium"
+      ],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -14,11 +19,19 @@
         "UCL"
       ],
       "tags": [],
-      "frequency": 365,
+      "frequency": 90,
       "preferredInteraction": "",
       "notes": "",
       "createdAt": "2026-03-22",
-      "interactions": []
+      "interactions": [
+        {
+          "id": "mn2n46e2zpzu45qk8eh",
+          "type": "phone",
+          "date": "2026-02-28",
+          "notes": "to catch up"
+        }
+      ],
+      "nextInteractionDate": ""
     },
     {
       "id": "s002",
@@ -26,7 +39,9 @@
       "email": "",
       "phone": "",
       "birthday": "",
-      "country": "Belgium",
+      "country": [
+        "Belgium"
+      ],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -46,7 +61,9 @@
       "email": "",
       "phone": "",
       "birthday": "1990-10-03",
-      "country": "Belgium",
+      "country": [
+        "Belgium"
+      ],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -66,7 +83,9 @@
       "email": "",
       "phone": "",
       "birthday": "",
-      "country": "Belgium",
+      "country": [
+        "Belgium"
+      ],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -86,7 +105,9 @@
       "email": "",
       "phone": "",
       "birthday": "",
-      "country": "Belgium",
+      "country": [
+        "Belgium"
+      ],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -106,7 +127,9 @@
       "email": "",
       "phone": "",
       "birthday": "1993-12-17",
-      "country": "Belgium",
+      "country": [
+        "Belgium"
+      ],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -128,7 +151,9 @@
       "birthday": "1993-03-01",
       "celebrateBirthday": true,
       "address": "",
-      "country": "Belgium",
+      "country": [
+        "Belgium"
+      ],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -148,7 +173,9 @@
       "email": "",
       "phone": "",
       "birthday": "",
-      "country": "Belgium",
+      "country": [
+        "Belgium"
+      ],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -168,7 +195,9 @@
       "email": "",
       "phone": "",
       "birthday": "",
-      "country": "Belgium",
+      "country": [
+        "Belgium"
+      ],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -188,7 +217,9 @@
       "email": "",
       "phone": "",
       "birthday": "",
-      "country": "Belgium",
+      "country": [
+        "Belgium"
+      ],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -208,7 +239,9 @@
       "email": "",
       "phone": "",
       "birthday": "",
-      "country": "Belgium",
+      "country": [
+        "Belgium"
+      ],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -228,7 +261,9 @@
       "email": "",
       "phone": "",
       "birthday": "1992-10-23",
-      "country": "Belgium",
+      "country": [
+        "Belgium"
+      ],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -248,7 +283,9 @@
       "email": "",
       "phone": "",
       "birthday": "",
-      "country": "Belgium",
+      "country": [
+        "Belgium"
+      ],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -268,7 +305,9 @@
       "email": "",
       "phone": "",
       "birthday": "",
-      "country": "Belgium",
+      "country": [
+        "Belgium"
+      ],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -288,7 +327,9 @@
       "email": "",
       "phone": "",
       "birthday": "",
-      "country": "Belgium",
+      "country": [
+        "Belgium"
+      ],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -308,7 +349,9 @@
       "email": "",
       "phone": "",
       "birthday": "",
-      "country": "Belgium",
+      "country": [
+        "Belgium"
+      ],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -328,7 +371,9 @@
       "email": "",
       "phone": "",
       "birthday": "1992-08-06",
-      "country": "Belgium",
+      "country": [
+        "Belgium"
+      ],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -348,7 +393,9 @@
       "email": "",
       "phone": "",
       "birthday": "1995-01-26",
-      "country": "Belgium",
+      "country": [
+        "Belgium"
+      ],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -368,7 +415,9 @@
       "email": "",
       "phone": "",
       "birthday": "",
-      "country": "Belgium",
+      "country": [
+        "Belgium"
+      ],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -388,7 +437,9 @@
       "email": "",
       "phone": "",
       "birthday": "",
-      "country": "Belgium",
+      "country": [
+        "Belgium"
+      ],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -408,7 +459,9 @@
       "email": "",
       "phone": "",
       "birthday": "1986-10-19",
-      "country": "Belgium",
+      "country": [
+        "Belgium"
+      ],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -428,7 +481,9 @@
       "email": "",
       "phone": "",
       "birthday": "1989-10-20",
-      "country": "Belgium",
+      "country": [
+        "Belgium"
+      ],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -448,7 +503,9 @@
       "email": "",
       "phone": "",
       "birthday": "1992-05-08",
-      "country": "Belgium",
+      "country": [
+        "Belgium"
+      ],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -468,7 +525,9 @@
       "email": "",
       "phone": "",
       "birthday": "1992-11-08",
-      "country": "Belgium",
+      "country": [
+        "Belgium"
+      ],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -488,7 +547,9 @@
       "email": "",
       "phone": "",
       "birthday": "",
-      "country": "Belgium",
+      "country": [
+        "Belgium"
+      ],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -508,7 +569,9 @@
       "email": "",
       "phone": "",
       "birthday": "",
-      "country": "Belgium",
+      "country": [
+        "Belgium"
+      ],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -528,7 +591,9 @@
       "email": "",
       "phone": "",
       "birthday": "1992-07-12",
-      "country": "Belgium",
+      "country": [
+        "Belgium"
+      ],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -548,7 +613,9 @@
       "email": "",
       "phone": "",
       "birthday": "",
-      "country": "Belgium",
+      "country": [
+        "Belgium"
+      ],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -568,7 +635,9 @@
       "email": "",
       "phone": "",
       "birthday": "",
-      "country": "Belgium",
+      "country": [
+        "Belgium"
+      ],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -588,7 +657,9 @@
       "email": "",
       "phone": "",
       "birthday": "1992-07-09",
-      "country": "Belgium",
+      "country": [
+        "Belgium"
+      ],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -608,7 +679,9 @@
       "email": "",
       "phone": "",
       "birthday": "",
-      "country": "Belgium",
+      "country": [
+        "Belgium"
+      ],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -628,7 +701,9 @@
       "email": "",
       "phone": "",
       "birthday": "",
-      "country": "Belgium",
+      "country": [
+        "Belgium"
+      ],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -648,7 +723,9 @@
       "email": "",
       "phone": "",
       "birthday": "",
-      "country": "Belgium",
+      "country": [
+        "Belgium"
+      ],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -668,7 +745,9 @@
       "email": "",
       "phone": "",
       "birthday": "",
-      "country": "Belgium",
+      "country": [
+        "Belgium"
+      ],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -688,7 +767,9 @@
       "email": "",
       "phone": "",
       "birthday": "1992-02-26",
-      "country": "Belgium",
+      "country": [
+        "Belgium"
+      ],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -708,7 +789,9 @@
       "email": "",
       "phone": "",
       "birthday": "1992-06-18",
-      "country": "Belgium",
+      "country": [
+        "Belgium"
+      ],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -728,7 +811,9 @@
       "email": "",
       "phone": "",
       "birthday": "1992-06-15",
-      "country": "Belgium",
+      "country": [
+        "Belgium"
+      ],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -748,7 +833,9 @@
       "email": "",
       "phone": "",
       "birthday": "",
-      "country": "Belgium",
+      "country": [
+        "Belgium"
+      ],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -768,7 +855,9 @@
       "email": "",
       "phone": "",
       "birthday": "",
-      "country": "Belgium",
+      "country": [
+        "Belgium"
+      ],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -788,7 +877,9 @@
       "email": "",
       "phone": "",
       "birthday": "",
-      "country": "Belgium",
+      "country": [
+        "Belgium"
+      ],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -808,7 +899,9 @@
       "email": "",
       "phone": "",
       "birthday": "",
-      "country": "Belgium",
+      "country": [
+        "Belgium"
+      ],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -828,7 +921,9 @@
       "email": "",
       "phone": "",
       "birthday": "",
-      "country": "Belgium",
+      "country": [
+        "Belgium"
+      ],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -848,7 +943,9 @@
       "email": "",
       "phone": "",
       "birthday": "",
-      "country": "Belgium",
+      "country": [
+        "Belgium"
+      ],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -868,7 +965,9 @@
       "email": "",
       "phone": "",
       "birthday": "",
-      "country": "Belgium",
+      "country": [
+        "Belgium"
+      ],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -888,7 +987,9 @@
       "email": "",
       "phone": "",
       "birthday": "",
-      "country": "Belgium",
+      "country": [
+        "Belgium"
+      ],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -908,7 +1009,9 @@
       "email": "",
       "phone": "",
       "birthday": "",
-      "country": "Belgium",
+      "country": [
+        "Belgium"
+      ],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -928,7 +1031,9 @@
       "email": "",
       "phone": "",
       "birthday": "",
-      "country": "Belgium",
+      "country": [
+        "Belgium"
+      ],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -948,7 +1053,9 @@
       "email": "",
       "phone": "",
       "birthday": "",
-      "country": "Belgium",
+      "country": [
+        "Belgium"
+      ],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -968,7 +1075,9 @@
       "email": "",
       "phone": "",
       "birthday": "",
-      "country": "Belgium",
+      "country": [
+        "Belgium"
+      ],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -988,7 +1097,9 @@
       "email": "",
       "phone": "",
       "birthday": "",
-      "country": "Belgium",
+      "country": [
+        "Belgium"
+      ],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -1008,7 +1119,9 @@
       "email": "",
       "phone": "",
       "birthday": "",
-      "country": "Belgium",
+      "country": [
+        "Belgium"
+      ],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -1028,7 +1141,9 @@
       "email": "",
       "phone": "",
       "birthday": "",
-      "country": "Belgium",
+      "country": [
+        "Belgium"
+      ],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -1048,7 +1163,9 @@
       "email": "",
       "phone": "",
       "birthday": "",
-      "country": "Belgium",
+      "country": [
+        "Belgium"
+      ],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -1068,7 +1185,9 @@
       "email": "",
       "phone": "",
       "birthday": "",
-      "country": "Belgium",
+      "country": [
+        "Belgium"
+      ],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -1088,7 +1207,9 @@
       "email": "",
       "phone": "",
       "birthday": "",
-      "country": "Belgium",
+      "country": [
+        "Belgium"
+      ],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -1108,7 +1229,9 @@
       "email": "",
       "phone": "",
       "birthday": "",
-      "country": "Belgium",
+      "country": [
+        "Belgium"
+      ],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -1128,7 +1251,9 @@
       "email": "",
       "phone": "",
       "birthday": "",
-      "country": "Belgium",
+      "country": [
+        "Belgium"
+      ],
       "industry": "Medicine",
       "linkedin": "",
       "instagram": "",
@@ -1148,7 +1273,9 @@
       "email": "",
       "phone": "",
       "birthday": "",
-      "country": "Belgium",
+      "country": [
+        "Belgium"
+      ],
       "industry": "Medicine",
       "linkedin": "",
       "instagram": "",
@@ -1168,7 +1295,9 @@
       "email": "",
       "phone": "",
       "birthday": "",
-      "country": "Belgium",
+      "country": [
+        "Belgium"
+      ],
       "industry": "Medicine",
       "linkedin": "",
       "instagram": "",
@@ -1188,7 +1317,9 @@
       "email": "",
       "phone": "",
       "birthday": "",
-      "country": "Belgium",
+      "country": [
+        "Belgium"
+      ],
       "industry": "Medicine",
       "linkedin": "",
       "instagram": "",
@@ -1208,7 +1339,9 @@
       "email": "",
       "phone": "",
       "birthday": "",
-      "country": "Belgium",
+      "country": [
+        "Belgium"
+      ],
       "industry": "Medicine",
       "linkedin": "",
       "instagram": "",
@@ -1228,7 +1361,9 @@
       "email": "",
       "phone": "",
       "birthday": "",
-      "country": "Belgium",
+      "country": [
+        "Belgium"
+      ],
       "industry": "Medicine",
       "linkedin": "",
       "instagram": "",
@@ -1248,7 +1383,9 @@
       "email": "",
       "phone": "",
       "birthday": "",
-      "country": "USA",
+      "country": [
+        "USA"
+      ],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -1275,7 +1412,9 @@
       "email": "",
       "phone": "",
       "birthday": "",
-      "country": "Italy",
+      "country": [
+        "Italy"
+      ],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -1295,7 +1434,9 @@
       "email": "",
       "phone": "",
       "birthday": "",
-      "country": "Saudi Arabia",
+      "country": [
+        "Saudi Arabia"
+      ],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -1307,7 +1448,14 @@
       "preferredInteraction": "",
       "notes": "Birthday: Jan 14 (year unknown)",
       "createdAt": "2026-03-22",
-      "interactions": []
+      "interactions": [
+        {
+          "id": "mn2mxg6ie7y6m56xidm",
+          "type": "phone",
+          "date": "2026-03-20",
+          "notes": "about his admission to HKS"
+        }
+      ]
     },
     {
       "id": "s066",
@@ -1315,7 +1463,9 @@
       "email": "",
       "phone": "",
       "birthday": "",
-      "country": "Chile",
+      "country": [
+        "Chile"
+      ],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -1335,7 +1485,9 @@
       "email": "",
       "phone": "",
       "birthday": "",
-      "country": "USA",
+      "country": [
+        "USA"
+      ],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -1355,7 +1507,9 @@
       "email": "",
       "phone": "",
       "birthday": "",
-      "country": "USA",
+      "country": [
+        "USA"
+      ],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -1375,7 +1529,9 @@
       "email": "",
       "phone": "",
       "birthday": "",
-      "country": "USA",
+      "country": [
+        "USA"
+      ],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -1395,7 +1551,9 @@
       "email": "",
       "phone": "",
       "birthday": "",
-      "country": "France",
+      "country": [
+        "France"
+      ],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -1415,7 +1573,9 @@
       "email": "",
       "phone": "",
       "birthday": "",
-      "country": "Nepal",
+      "country": [
+        "Nepal"
+      ],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -1435,7 +1595,9 @@
       "email": "",
       "phone": "",
       "birthday": "",
-      "country": "USA",
+      "country": [
+        "USA"
+      ],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -1455,7 +1617,9 @@
       "email": "",
       "phone": "",
       "birthday": "",
-      "country": "USA",
+      "country": [
+        "USA"
+      ],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -1475,7 +1639,9 @@
       "email": "",
       "phone": "",
       "birthday": "1993-07-07",
-      "country": "USA",
+      "country": [
+        "USA"
+      ],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -1495,7 +1661,9 @@
       "email": "",
       "phone": "",
       "birthday": "",
-      "country": "Colombia",
+      "country": [
+        "Colombia"
+      ],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -1515,7 +1683,9 @@
       "email": "",
       "phone": "",
       "birthday": "",
-      "country": "USA",
+      "country": [
+        "USA"
+      ],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -1535,7 +1705,9 @@
       "email": "",
       "phone": "",
       "birthday": "",
-      "country": "India",
+      "country": [
+        "India"
+      ],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -1555,7 +1727,9 @@
       "email": "",
       "phone": "",
       "birthday": "",
-      "country": "USA",
+      "country": [
+        "USA"
+      ],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -1577,7 +1751,9 @@
       "birthday": "",
       "celebrateBirthday": false,
       "address": "",
-      "country": "USA",
+      "country": [
+        "USA"
+      ],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -1607,7 +1783,9 @@
       "email": "",
       "phone": "",
       "birthday": "",
-      "country": "USA",
+      "country": [
+        "USA"
+      ],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -1627,7 +1805,9 @@
       "email": "",
       "phone": "",
       "birthday": "",
-      "country": "USA",
+      "country": [
+        "USA"
+      ],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -1647,7 +1827,9 @@
       "email": "",
       "phone": "",
       "birthday": "1993-11-16",
-      "country": "Saudi Arabia",
+      "country": [
+        "Saudi Arabia"
+      ],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -1667,7 +1849,9 @@
       "email": "",
       "phone": "",
       "birthday": "",
-      "country": "El Salvador",
+      "country": [
+        "El Salvador"
+      ],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -1687,7 +1871,9 @@
       "email": "",
       "phone": "",
       "birthday": "",
-      "country": "USA",
+      "country": [
+        "USA"
+      ],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -1707,7 +1893,9 @@
       "email": "",
       "phone": "",
       "birthday": "1991-12-31",
-      "country": "USA",
+      "country": [
+        "USA"
+      ],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -1727,7 +1915,9 @@
       "email": "",
       "phone": "",
       "birthday": "",
-      "country": "El Salvador",
+      "country": [
+        "El Salvador"
+      ],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -1747,7 +1937,7 @@
       "email": "",
       "phone": "+1 2152843572",
       "birthday": "",
-      "country": "",
+      "country": [],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -1767,7 +1957,7 @@
       "email": "",
       "phone": "+1 9295947062",
       "birthday": "",
-      "country": "",
+      "country": [],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -1779,7 +1969,20 @@
       "preferredInteraction": "",
       "notes": "",
       "createdAt": "2026-03-22",
-      "interactions": []
+      "interactions": [
+        {
+          "id": "mn2lvfmfjw2sw2s2ntq",
+          "type": "phone",
+          "date": "2024-10-09",
+          "notes": ""
+        },
+        {
+          "id": "mn2mwd063nmc2078e3e",
+          "type": "other",
+          "date": "2025-05-23",
+          "notes": "graduation"
+        }
+      ]
     },
     {
       "id": "s089",
@@ -1787,7 +1990,10 @@
       "email": "",
       "phone": "+33 663872227",
       "birthday": "",
-      "country": "",
+      "celebrateBirthday": false,
+      "markedComplete": false,
+      "address": "",
+      "country": [],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -1795,11 +2001,19 @@
         "Harvard"
       ],
       "tags": [],
-      "frequency": 365,
+      "frequency": 60,
       "preferredInteraction": "",
       "notes": "",
       "createdAt": "2026-03-22",
-      "interactions": []
+      "interactions": [
+        {
+          "id": "mn2nb5v6u7vjuthkxnq",
+          "type": "phone",
+          "date": "2026-04-15",
+          "notes": "catch up"
+        }
+      ],
+      "nextInteractionDate": ""
     },
     {
       "id": "s090",
@@ -1807,7 +2021,7 @@
       "email": "",
       "phone": "+1 6262978143",
       "birthday": "",
-      "country": "",
+      "country": [],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -1827,7 +2041,7 @@
       "email": "",
       "phone": "+49 15127526888",
       "birthday": "",
-      "country": "",
+      "country": [],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -1847,7 +2061,7 @@
       "email": "",
       "phone": "+1 7818179861",
       "birthday": "",
-      "country": "",
+      "country": [],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -1867,7 +2081,7 @@
       "email": "",
       "phone": "+1 9152037699",
       "birthday": "",
-      "country": "",
+      "country": [],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -1887,7 +2101,7 @@
       "email": "",
       "phone": "+30 69773057971",
       "birthday": "",
-      "country": "",
+      "country": [],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -1907,7 +2121,7 @@
       "email": "",
       "phone": "+1 6172518207",
       "birthday": "",
-      "country": "",
+      "country": [],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -1927,7 +2141,10 @@
       "email": "",
       "phone": "+1 6033597794",
       "birthday": "",
-      "country": "",
+      "celebrateBirthday": false,
+      "markedComplete": false,
+      "address": "",
+      "country": [],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -1935,11 +2152,19 @@
         "Harvard"
       ],
       "tags": [],
-      "frequency": 365,
+      "frequency": 180,
       "preferredInteraction": "",
       "notes": "",
       "createdAt": "2026-03-22",
-      "interactions": []
+      "interactions": [
+        {
+          "id": "mn2n2xox4lbuu12dk6c",
+          "type": "f2f",
+          "date": "2025-10-17",
+          "notes": "at the HArvard club of ny"
+        }
+      ],
+      "nextInteractionDate": ""
     },
     {
       "id": "s097",
@@ -1947,7 +2172,12 @@
       "email": "",
       "phone": "+1 9109642752",
       "birthday": "",
-      "country": "USA",
+      "celebrateBirthday": false,
+      "markedComplete": false,
+      "address": "",
+      "country": [
+        "USA"
+      ],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -1959,7 +2189,8 @@
       "preferredInteraction": "",
       "notes": "",
       "createdAt": "2026-03-22",
-      "interactions": []
+      "interactions": [],
+      "nextInteractionDate": ""
     },
     {
       "id": "s098",
@@ -1967,7 +2198,7 @@
       "email": "",
       "phone": "+1 9492789293",
       "birthday": "",
-      "country": "",
+      "country": [],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -1987,7 +2218,7 @@
       "email": "",
       "phone": "+1 339220444",
       "birthday": "",
-      "country": "",
+      "country": [],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -2007,7 +2238,7 @@
       "email": "",
       "phone": "+1 6172518902",
       "birthday": "",
-      "country": "",
+      "country": [],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -2027,7 +2258,7 @@
       "email": "",
       "phone": "+1 6505196891",
       "birthday": "",
-      "country": "",
+      "country": [],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -2047,7 +2278,9 @@
       "email": "",
       "phone": "+81 8066319888",
       "birthday": "",
-      "country": "Japan",
+      "country": [
+        "Japan"
+      ],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -2067,7 +2300,7 @@
       "email": "",
       "phone": "+49 15252658200",
       "birthday": "",
-      "country": "",
+      "country": [],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -2087,7 +2320,7 @@
       "email": "",
       "phone": "+1 9293946551",
       "birthday": "",
-      "country": "",
+      "country": [],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -2107,7 +2340,7 @@
       "email": "",
       "phone": "+1 3104270091",
       "birthday": "",
-      "country": "",
+      "country": [],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -2127,7 +2360,7 @@
       "email": "",
       "phone": "+1 6506706974",
       "birthday": "",
-      "country": "",
+      "country": [],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -2147,7 +2380,7 @@
       "email": "",
       "phone": "+1 7607167074",
       "birthday": "",
-      "country": "",
+      "country": [],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -2167,7 +2400,7 @@
       "email": "",
       "phone": "+1 2675762657",
       "birthday": "",
-      "country": "",
+      "country": [],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -2187,7 +2420,7 @@
       "email": "",
       "phone": "+49 15755810986",
       "birthday": "",
-      "country": "",
+      "country": [],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -2207,7 +2440,7 @@
       "email": "",
       "phone": "+1 6179028499",
       "birthday": "",
-      "country": "",
+      "country": [],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -2227,7 +2460,7 @@
       "email": "",
       "phone": "+1 6467755849",
       "birthday": "",
-      "country": "",
+      "country": [],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -2247,7 +2480,7 @@
       "email": "",
       "phone": "+1 6507967371",
       "birthday": "",
-      "country": "",
+      "country": [],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -2267,7 +2500,7 @@
       "email": "",
       "phone": "",
       "birthday": "",
-      "country": "",
+      "country": [],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -2287,7 +2520,7 @@
       "email": "",
       "phone": "",
       "birthday": "",
-      "country": "",
+      "country": [],
       "industry": "",
       "linkedin": "",
       "instagram": "",
@@ -2307,7 +2540,7 @@
       "email": "",
       "phone": "",
       "birthday": "",
-      "country": "",
+      "country": [],
       "industry": "",
       "linkedin": "",
       "instagram": "",
