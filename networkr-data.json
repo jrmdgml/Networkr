@@ -173,6 +173,9 @@
       "email": "",
       "phone": "",
       "birthday": "",
+      "celebrateBirthday": false,
+      "markedComplete": false,
+      "address": "",
       "country": [
         "Belgium"
       ],
@@ -183,11 +186,20 @@
         "UCL"
       ],
       "tags": [],
-      "frequency": 365,
+      "frequency": 120,
       "preferredInteraction": "",
       "notes": "",
       "createdAt": "2026-03-22",
-      "interactions": []
+      "interactions": [
+        {
+          "id": "mn2nss3x6lnrm0hzvp",
+          "type": "f2f",
+          "date": "2025-07-18",
+          "notes": "drink a la gare de liege"
+        }
+      ],
+      "nextInteractionDate": "",
+      "paused": false
     },
     {
       "id": "s009",
@@ -305,6 +317,9 @@
       "email": "",
       "phone": "",
       "birthday": "",
+      "celebrateBirthday": false,
+      "markedComplete": false,
+      "address": "",
       "country": [
         "Belgium"
       ],
@@ -315,11 +330,20 @@
         "Solvay"
       ],
       "tags": [],
-      "frequency": 365,
+      "frequency": 90,
       "preferredInteraction": "",
       "notes": "",
       "createdAt": "2026-03-22",
-      "interactions": []
+      "interactions": [
+        {
+          "id": "mn2nrpc6qwyt2tp85ti",
+          "type": "whatsapp",
+          "date": "2026-01-10",
+          "notes": ""
+        }
+      ],
+      "nextInteractionDate": "",
+      "paused": false
     },
     {
       "id": "s015",
@@ -349,6 +373,9 @@
       "email": "",
       "phone": "",
       "birthday": "",
+      "celebrateBirthday": false,
+      "markedComplete": false,
+      "address": "",
       "country": [
         "Belgium"
       ],
@@ -359,11 +386,19 @@
         "Solvay"
       ],
       "tags": [],
-      "frequency": 365,
+      "frequency": 120,
       "preferredInteraction": "",
       "notes": "",
       "createdAt": "2026-03-22",
-      "interactions": []
+      "interactions": [
+        {
+          "id": "mn2nnwhi2d806y5l3lk",
+          "type": "instagram",
+          "date": "2025-08-23",
+          "notes": "response story"
+        }
+      ],
+      "nextInteractionDate": ""
     },
     {
       "id": "s017",
@@ -437,6 +472,9 @@
       "email": "",
       "phone": "",
       "birthday": "",
+      "celebrateBirthday": false,
+      "markedComplete": false,
+      "address": "",
       "country": [
         "Belgium"
       ],
@@ -451,7 +489,9 @@
       "preferredInteraction": "",
       "notes": "",
       "createdAt": "2026-03-22",
-      "interactions": []
+      "interactions": [],
+      "nextInteractionDate": "",
+      "paused": false
     },
     {
       "id": "s021",
@@ -525,6 +565,9 @@
       "email": "",
       "phone": "",
       "birthday": "1992-11-08",
+      "celebrateBirthday": false,
+      "markedComplete": false,
+      "address": "",
       "country": [
         "Belgium"
       ],
@@ -535,11 +578,19 @@
         "Thimister"
       ],
       "tags": [],
-      "frequency": 365,
+      "frequency": 30,
       "preferredInteraction": "",
       "notes": "",
       "createdAt": "2026-03-22",
-      "interactions": []
+      "interactions": [
+        {
+          "id": "mn2nochp3t3gkkt5hgl",
+          "type": "messenger",
+          "date": "2026-03-20",
+          "notes": ""
+        }
+      ],
+      "nextInteractionDate": ""
     },
     {
       "id": "s025",
@@ -547,6 +598,9 @@
       "email": "",
       "phone": "",
       "birthday": "",
+      "celebrateBirthday": false,
+      "markedComplete": false,
+      "address": "",
       "country": [
         "Belgium"
       ],
@@ -557,11 +611,19 @@
         "Thimister"
       ],
       "tags": [],
-      "frequency": 365,
+      "frequency": 120,
       "preferredInteraction": "",
       "notes": "",
       "createdAt": "2026-03-22",
-      "interactions": []
+      "interactions": [
+        {
+          "id": "mn2ngdzxuqfq0xeyfbf",
+          "type": "phone",
+          "date": "2025-12-24",
+          "notes": "retour en BE"
+        }
+      ],
+      "nextInteractionDate": ""
     },
     {
       "id": "s026",
@@ -591,6 +653,9 @@
       "email": "",
       "phone": "",
       "birthday": "1992-07-12",
+      "celebrateBirthday": false,
+      "markedComplete": false,
+      "address": "",
       "country": [
         "Belgium"
       ],
@@ -601,11 +666,20 @@
         "Thimister"
       ],
       "tags": [],
-      "frequency": 365,
+      "frequency": 30,
       "preferredInteraction": "",
       "notes": "",
       "createdAt": "2026-03-22",
-      "interactions": []
+      "interactions": [
+        {
+          "id": "mn2nr1lbitup6htv4i9",
+          "type": "messenger",
+          "date": "2026-03-16",
+          "notes": ""
+        }
+      ],
+      "nextInteractionDate": "",
+      "paused": false
     },
     {
       "id": "s028",
@@ -657,6 +731,9 @@
       "email": "",
       "phone": "",
       "birthday": "1992-07-09",
+      "celebrateBirthday": false,
+      "markedComplete": false,
+      "address": "",
       "country": [
         "Belgium"
       ],
@@ -667,11 +744,19 @@
         "Thimister"
       ],
       "tags": [],
-      "frequency": 365,
+      "frequency": 90,
       "preferredInteraction": "",
       "notes": "",
       "createdAt": "2026-03-22",
-      "interactions": []
+      "interactions": [
+        {
+          "id": "mn2nl69nvcbzm0lz0y",
+          "type": "f2f",
+          "date": "2025-12-20",
+          "notes": "visite pour son nouveau goss chez elle a petit rechain"
+        }
+      ],
+      "nextInteractionDate": ""
     },
     {
       "id": "s031",
@@ -723,6 +808,9 @@
       "email": "",
       "phone": "",
       "birthday": "",
+      "celebrateBirthday": false,
+      "markedComplete": false,
+      "address": "",
       "country": [
         "Belgium"
       ],
@@ -733,11 +821,19 @@
         "Thimister"
       ],
       "tags": [],
-      "frequency": 365,
+      "frequency": 180,
       "preferredInteraction": "",
       "notes": "",
       "createdAt": "2026-03-22",
-      "interactions": []
+      "interactions": [
+        {
+          "id": "mn2nkcl0f43ewokzs15",
+          "type": "f2f",
+          "date": "2025-07-20",
+          "notes": "drink au coin a battice"
+        }
+      ],
+      "nextInteractionDate": ""
     },
     {
       "id": "s034",
@@ -811,6 +907,9 @@
       "email": "",
       "phone": "",
       "birthday": "1992-06-15",
+      "celebrateBirthday": false,
+      "markedComplete": false,
+      "address": "",
       "country": [
         "Belgium"
       ],
@@ -821,11 +920,19 @@
         "Thimister"
       ],
       "tags": [],
-      "frequency": 365,
+      "frequency": 90,
       "preferredInteraction": "",
       "notes": "",
       "createdAt": "2026-03-22",
-      "interactions": []
+      "interactions": [
+        {
+          "id": "mn2nhrugtjpnsoz924",
+          "type": "f2f",
+          "date": "2026-01-10",
+          "notes": "Wedding de Lambot"
+        }
+      ],
+      "nextInteractionDate": ""
     },
     {
       "id": "s038",
@@ -921,6 +1028,9 @@
       "email": "",
       "phone": "",
       "birthday": "",
+      "celebrateBirthday": false,
+      "markedComplete": false,
+      "address": "",
       "country": [
         "Belgium"
       ],
@@ -931,11 +1041,13 @@
         "Thimister"
       ],
       "tags": [],
-      "frequency": 365,
+      "frequency": 180,
       "preferredInteraction": "",
       "notes": "",
       "createdAt": "2026-03-22",
-      "interactions": []
+      "interactions": [],
+      "nextInteractionDate": "",
+      "paused": false
     },
     {
       "id": "s043",
@@ -965,6 +1077,9 @@
       "email": "",
       "phone": "",
       "birthday": "",
+      "celebrateBirthday": false,
+      "markedComplete": false,
+      "address": "",
       "country": [
         "Belgium"
       ],
@@ -975,11 +1090,13 @@
         "Thimister"
       ],
       "tags": [],
-      "frequency": 365,
+      "frequency": 30,
       "preferredInteraction": "",
       "notes": "",
       "createdAt": "2026-03-22",
-      "interactions": []
+      "interactions": [],
+      "nextInteractionDate": "",
+      "paused": false
     },
     {
       "id": "s045",
@@ -1273,6 +1390,9 @@
       "email": "",
       "phone": "",
       "birthday": "",
+      "celebrateBirthday": false,
+      "markedComplete": false,
+      "address": "",
       "country": [
         "Belgium"
       ],
@@ -1287,7 +1407,9 @@
       "preferredInteraction": "",
       "notes": "",
       "createdAt": "2026-03-22",
-      "interactions": []
+      "interactions": [],
+      "nextInteractionDate": "",
+      "paused": false
     },
     {
       "id": "s059",
@@ -1331,7 +1453,14 @@
       "preferredInteraction": "",
       "notes": "",
       "createdAt": "2026-03-22",
-      "interactions": []
+      "interactions": [
+        {
+          "id": "mn2ni9vdrjoh2y7zlkd",
+          "type": "phone",
+          "date": "2026-02-01",
+          "notes": "catch up after son mot de nouvel an"
+        }
+      ]
     },
     {
       "id": "s061",
@@ -1383,6 +1512,9 @@
       "email": "",
       "phone": "",
       "birthday": "",
+      "celebrateBirthday": false,
+      "markedComplete": false,
+      "address": "",
       "country": [
         "USA"
       ],
@@ -1393,25 +1525,30 @@
         "MIT"
       ],
       "tags": [],
-      "frequency": 365,
+      "frequency": 180,
       "preferredInteraction": "",
       "notes": "Birthday: Jan 7 (year unknown)",
       "createdAt": "2026-03-22",
       "interactions": [
         {
-          "id": "mn2istce2nofn6s3xvq",
-          "type": "phone",
+          "id": "mn2ob2598zpncjixt36",
+          "type": "instagram",
           "date": "2026-03-23",
-          "notes": "about copilot"
+          "notes": ""
         }
-      ]
+      ],
+      "nextInteractionDate": "",
+      "paused": false
     },
     {
       "id": "s064",
       "name": "Giacomo Corti",
       "email": "",
       "phone": "",
-      "birthday": "",
+      "birthday": "1995-01-07",
+      "celebrateBirthday": true,
+      "markedComplete": true,
+      "address": "",
       "country": [
         "Italy"
       ],
@@ -1422,11 +1559,13 @@
         "MIT"
       ],
       "tags": [],
-      "frequency": 365,
+      "frequency": 30,
       "preferredInteraction": "",
       "notes": "Birthday: Jan 7 (year unknown)",
       "createdAt": "2026-03-22",
-      "interactions": []
+      "interactions": [],
+      "nextInteractionDate": "",
+      "paused": false
     },
     {
       "id": "s065",
@@ -1434,6 +1573,9 @@
       "email": "",
       "phone": "",
       "birthday": "",
+      "celebrateBirthday": false,
+      "markedComplete": true,
+      "address": "",
       "country": [
         "Saudi Arabia"
       ],
@@ -1455,7 +1597,9 @@
           "date": "2026-03-20",
           "notes": "about his admission to HKS"
         }
-      ]
+      ],
+      "nextInteractionDate": "",
+      "paused": false
     },
     {
       "id": "s066",
@@ -1594,7 +1738,10 @@
       "name": "Emma Larson",
       "email": "",
       "phone": "",
-      "birthday": "",
+      "birthday": "1900-05-17",
+      "celebrateBirthday": true,
+      "markedComplete": false,
+      "address": "",
       "country": [
         "USA"
       ],
@@ -1605,11 +1752,13 @@
         "MIT"
       ],
       "tags": [],
-      "frequency": 365,
+      "frequency": 60,
       "preferredInteraction": "",
       "notes": "Birthday: May 17 (year unknown)",
       "createdAt": "2026-03-22",
-      "interactions": []
+      "interactions": [],
+      "nextInteractionDate": "",
+      "paused": false
     },
     {
       "id": "s073",
@@ -1750,6 +1899,7 @@
       "phone": "",
       "birthday": "",
       "celebrateBirthday": false,
+      "markedComplete": false,
       "address": "",
       "country": [
         "USA"
@@ -1764,7 +1914,7 @@
         "test",
         "test2"
       ],
-      "frequency": 365,
+      "frequency": 120,
       "preferredInteraction": "",
       "notes": "Birthday: Oct 6 (year unknown)",
       "createdAt": "2026-03-22",
@@ -1775,7 +1925,9 @@
           "date": "2026-03-13",
           "notes": "about cocopilot"
         }
-      ]
+      ],
+      "nextInteractionDate": "",
+      "paused": false
     },
     {
       "id": "s080",
@@ -1825,8 +1977,11 @@
       "id": "s082",
       "name": "Ibrahim Al-Ibrahim",
       "email": "",
-      "phone": "",
+      "phone": "+447555500777",
       "birthday": "1993-11-16",
+      "celebrateBirthday": true,
+      "markedComplete": true,
+      "address": "",
       "country": [
         "Saudi Arabia"
       ],
@@ -1837,11 +1992,13 @@
         "MIT"
       ],
       "tags": [],
-      "frequency": 365,
+      "frequency": 30,
       "preferredInteraction": "",
       "notes": "",
       "createdAt": "2026-03-22",
-      "interactions": []
+      "interactions": [],
+      "nextInteractionDate": "",
+      "paused": false
     },
     {
       "id": "s083",
@@ -1957,6 +2114,9 @@
       "email": "",
       "phone": "+1 9295947062",
       "birthday": "",
+      "celebrateBirthday": false,
+      "markedComplete": true,
+      "address": "",
       "country": [],
       "industry": "",
       "linkedin": "",
@@ -1982,7 +2142,9 @@
           "date": "2025-05-23",
           "notes": "graduation"
         }
-      ]
+      ],
+      "nextInteractionDate": "",
+      "paused": false
     },
     {
       "id": "s089",
@@ -2142,7 +2304,7 @@
       "phone": "+1 6033597794",
       "birthday": "",
       "celebrateBirthday": false,
-      "markedComplete": false,
+      "markedComplete": true,
       "address": "",
       "country": [],
       "industry": "",
@@ -2164,7 +2326,8 @@
           "notes": "at the HArvard club of ny"
         }
       ],
-      "nextInteractionDate": ""
+      "nextInteractionDate": "",
+      "paused": false
     },
     {
       "id": "s097",
@@ -2210,7 +2373,14 @@
       "preferredInteraction": "",
       "notes": "",
       "createdAt": "2026-03-22",
-      "interactions": []
+      "interactions": [
+        {
+          "id": "mn2niwtzlhj2kdr2jf",
+          "type": "phone",
+          "date": "2025-05-31",
+          "notes": "graduation hks"
+        }
+      ]
     },
     {
       "id": "s099",
@@ -2440,6 +2610,9 @@
       "email": "",
       "phone": "+1 6179028499",
       "birthday": "",
+      "celebrateBirthday": false,
+      "markedComplete": false,
+      "address": "",
       "country": [],
       "industry": "",
       "linkedin": "",
@@ -2448,11 +2621,13 @@
         "Harvard"
       ],
       "tags": [],
-      "frequency": 365,
+      "frequency": 120,
       "preferredInteraction": "",
       "notes": "",
       "createdAt": "2026-03-22",
-      "interactions": []
+      "interactions": [],
+      "nextInteractionDate": "",
+      "paused": false
     },
     {
       "id": "s111",
@@ -2500,6 +2675,9 @@
       "email": "",
       "phone": "",
       "birthday": "",
+      "celebrateBirthday": false,
+      "markedComplete": false,
+      "address": "",
       "country": [],
       "industry": "",
       "linkedin": "",
@@ -2508,11 +2686,19 @@
         "Harvard"
       ],
       "tags": [],
-      "frequency": 365,
+      "frequency": 180,
       "preferredInteraction": "",
       "notes": "",
       "createdAt": "2026-03-22",
-      "interactions": []
+      "interactions": [
+        {
+          "id": "mn2nll1a2xrj4dlyywg",
+          "type": "other",
+          "date": "2025-05-31",
+          "notes": "graduation hks"
+        }
+      ],
+      "nextInteractionDate": ""
     },
     {
       "id": "s114",
@@ -2532,7 +2718,8 @@
       "preferredInteraction": "",
       "notes": "",
       "createdAt": "2026-03-22",
-      "interactions": []
+      "interactions": [],
+      "paused": true
     },
     {
       "id": "s115",
@@ -2552,7 +2739,38 @@
       "preferredInteraction": "",
       "notes": "",
       "createdAt": "2026-03-22",
-      "interactions": []
+      "interactions": [],
+      "paused": true
+    },
+    {
+      "id": "mn2nxq44df3m766p2qc",
+      "name": "Jesse Kesner",
+      "email": "",
+      "phone": "+1 8475011044",
+      "birthday": "",
+      "celebrateBirthday": false,
+      "markedComplete": true,
+      "address": "",
+      "country": [],
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [],
+      "tags": [],
+      "frequency": 180,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-23",
+      "interactions": [
+        {
+          "id": "mn2nyb7nj1n5t118cg",
+          "type": "f2f",
+          "date": "2026-03-13",
+          "notes": "party in nyc at jazz club"
+        }
+      ],
+      "nextInteractionDate": "",
+      "paused": false
     }
   ],
   "categories": [
