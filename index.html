@@ -149,6 +149,7 @@ main { flex: 1; overflow-y: auto; padding: 22px 24px; }
 .reminder-card.overdue { border-left: 3px solid var(--danger); }
 .reminder-card.upcoming { border-left: 3px solid var(--warning); }
 .reminder-card.birthday { border-left: 3px solid var(--purple); }
+.contact-card.paused { opacity: .65; }
 .contact-card {
   background: var(--surface); border: 1px solid var(--border);
   border-radius: 10px; padding: 14px 16px; cursor: pointer;
@@ -176,7 +177,8 @@ main { flex: 1; overflow-y: auto; padding: 22px 24px; }
 .status-upcoming { background: #fffbeb; color: var(--warning); }
 .status-birthday { background: #f5f3ff; color: var(--purple); }
 .status-ok   { background: #f0fdf4; color: var(--success); }
-.status-none { background: var(--surface2); color: var(--text-muted); }
+.status-none   { background: var(--surface2); color: var(--text-muted); }
+.status-paused { background: #f1f5f9; color: #64748b; }
 .due-label { font-size: 12.5px; }
 .due-label.overdue  { color: var(--danger);  font-weight: 600; }
 .due-label.upcoming { color: var(--warning); font-weight: 600; }
@@ -670,6 +672,7 @@ function lastInteractionDate(c) {
   return c.interactions[c.interactions.length-1].date;
 }
 function contactStatus(c) {
+  if (c.paused) return 'paused';
   const d = daysUntilDue(c);
   if (d===null) return 'none';
   if (d<0) return 'overdue';
@@ -841,8 +844,8 @@ function renderSidebar() {
 }
 
 function renderDashboard() {
-  const overdue  = db.contacts.filter(c=>contactStatus(c)==='overdue');
-  const upcoming = db.contacts.filter(c=>contactStatus(c)==='upcoming');
+  const overdue  = db.contacts.filter(c=>!c.paused && contactStatus(c)==='overdue');
+  const upcoming = db.contacts.filter(c=>!c.paused && contactStatus(c)==='upcoming');
   const totalI   = db.contacts.reduce((s,c)=>s+(c.interactions||[]).length,0);
 
   // Upcoming birthdays (within 14 days, only for contacts with celebrateBirthday=true)
@@ -968,10 +971,11 @@ function contactCardHTML(c) {
     overdue: `<span class="status-badge status-overdue">Overdue</span>`,
     upcoming:`<span class="status-badge status-upcoming">Due in ${due}d</span>`,
     ok:      `<span class="status-badge status-ok">On track</span>`,
-    none:    `<span class="status-badge status-none">No reminder</span>`
+    none:    `<span class="status-badge status-none">No reminder</span>`,
+    paused:  `<span class="status-badge status-paused">⏸ Paused</span>`
   }[status];
   const bday = c.celebrateBirthday&&bdDays!==null&&bdDays<=14 ? `<span class="status-badge status-birthday" style="margin-left:4px">🎂 ${bdDays===0?'Today!':'in '+bdDays+'d'}</span>` : '';
-  return `<div class="contact-card" onclick="openDetail('${c.id}')">
+  return `<div class="contact-card${c.paused?' paused':''}" onclick="openDetail('${c.id}')">
     <div class="card-header">
       <div class="avatar ${avClass(c.name)}">${esc(initials(c.name))}</div>
       <div class="card-info">
@@ -1008,7 +1012,8 @@ function openDetail(id) {
     overdue: `<span class="status-badge status-overdue">Overdue</span>`,
     upcoming:`<span class="status-badge status-upcoming">Due in ${due} days</span>`,
     ok:      `<span class="status-badge status-ok">On track</span>`,
-    none:    `<span class="status-badge status-none">No reminder</span>`
+    none:    `<span class="status-badge status-none">No reminder</span>`,
+    paused:  `<span class="status-badge status-paused">⏸ Paused</span>`
   }[status];
 
   const cats=(c.categories||[]).map(cat=>`<span class="cat-badge ${ccClass(cat)}" style="padding:4px 11px">${esc(cat)}</span>`).join('');
@@ -1094,6 +1099,7 @@ function openDetail(id) {
       <div class="modal-footer modal-footer-split">
         <button class="btn btn-danger btn-sm" onclick="deleteContact('${id}')">Delete Contact</button>
         <div style="display:flex;gap:8px">
+          <button class="btn btn-secondary btn-sm" onclick="togglePause('${id}')" title="${c.paused?'Resume reminders':'Pause reminders'}">${c.paused?'▶ Resume':'⏸ Pause'}</button>
           <button class="btn btn-secondary" onclick="openEditContact('${id}')">Edit</button>
           <button class="btn btn-primary" onclick="openLogInteraction('${id}')">+ Log Interaction</button>
         </div>
@@ -1342,7 +1348,8 @@ async function saveContact(id) {
     notes:(document.getElementById('fnotes').value||'').trim(),
     createdAt:existing?existing.createdAt:new Date().toISOString().split('T')[0],
     interactions:existing?existing.interactions:[],
-    nextInteractionDate:existing?existing.nextInteractionDate||'':''
+    nextInteractionDate:existing?existing.nextInteractionDate||'':'',
+    paused:existing?existing.paused||false:false
   };
   if(id){const idx=db.contacts.findIndex(c=>c.id===id);if(idx!==-1)db.contacts[idx]=contact;}
   else db.contacts.push(contact);
@@ -1388,6 +1395,13 @@ async function saveInteraction(contactId) {
   c.interactions.push({id:uid(),type:document.getElementById('itype').value,date,notes:(document.getElementById('inotes').value||'').trim()});
   c.interactions.sort((a,b)=>a.date.localeCompare(b.date));
   await saveDB(); closeModal(); render(); showToast('Interaction logged');
+}
+
+async function togglePause(id) {
+  const c=db.contacts.find(x=>x.id===id); if(!c)return;
+  c.paused = !c.paused;
+  await saveDB(); openDetail(id); render();
+  showToast(c.paused ? '⏸ Reminders paused' : '▶ Reminders resumed');
 }
 
 async function saveNextDue(id) {
@@ -1691,11 +1705,15 @@ async function runImport() {
 // ============================================================
 function renderOverdue() {
   const overdue = db.contacts
-    .filter(c => contactStatus(c) === 'overdue' && lastInteractionDate(c) !== null)
-    .sort((a, b) => daysUntilDue(a) - daysUntilDue(b));   // most overdue first
+    .filter(c => !c.paused && contactStatus(c) === 'overdue' && lastInteractionDate(c) !== null)
+    .sort((a, b) => daysUntilDue(a) - daysUntilDue(b));
 
   const neverContacted = db.contacts
-    .filter(c => c.frequency && !lastInteractionDate(c))
+    .filter(c => !c.paused && c.frequency && !lastInteractionDate(c))
+    .sort((a, b) => a.name.localeCompare(b.name));
+
+  const paused = db.contacts
+    .filter(c => c.paused)
     .sort((a, b) => a.name.localeCompare(b.name));
 
   const tab = state.overdueTab;
@@ -1707,17 +1725,19 @@ function renderOverdue() {
     <button class="inner-tab ${tab==='never'?'active':''}" onclick="state.overdueTab='never';renderOverdue()">
       Never Contacted <span class="count">${neverContacted.length}</span>
     </button>
+    <button class="inner-tab ${tab==='paused'?'active':''}" onclick="state.overdueTab='paused';renderOverdue()">
+      Paused <span class="count">${paused.length}</span>
+    </button>
   </div>`;
 
-  const list = tab === 'overdue' ? overdue : neverContacted;
+  const list = tab === 'overdue' ? overdue : tab === 'never' ? neverContacted : paused;
 
   let rows = '';
   if (!list.length) {
-    rows = `<div class="empty-state">
-      <div class="empty-icon">${tab==='overdue'?'🎉':'👋'}</div>
-      <h3>${tab==='overdue'?'All caught up!':'No contacts without interaction'}</h3>
-      <p>${tab==='overdue'?'No overdue interactions right now.':'Every contact with a reminder has been contacted at least once.'}</p>
-    </div>`;
+    const emptyIcon  = tab==='overdue'?'🎉' : tab==='never'?'👋' : '⏸';
+    const emptyTitle = tab==='overdue'?'All caught up!' : tab==='never'?'No contacts without interaction' : 'No paused contacts';
+    const emptyDesc  = tab==='overdue'?'No overdue interactions right now.' : tab==='never'?'Every contact with a reminder has been contacted at least once.' : 'Use the ⏸ Pause button in a contact\'s detail view to pause their reminders.';
+    rows = `<div class="empty-state"><div class="empty-icon">${emptyIcon}</div><h3>${emptyTitle}</h3><p>${emptyDesc}</p></div>`;
   } else {
     const rowsHTML = list.map(c => {
       const due = daysUntilDue(c);
@@ -1729,6 +1749,8 @@ function renderOverdue() {
       if (tab === 'overdue') {
         const absD = Math.abs(due);
         dueCell = `<span style="color:var(--danger);font-weight:600">${absD} day${absD!==1?'s':''} overdue</span>`;
+      } else if (tab === 'paused') {
+        dueCell = `<span class="status-badge status-paused">⏸ Paused</span>`;
       } else {
         dueCell = `<span style="color:var(--text-muted)">—</span>`;
       }
@@ -1747,8 +1769,11 @@ function renderOverdue() {
         <td><span style="font-size:12.5px;color:var(--text-muted)">${lastI?`${itype(lastI.type).icon} ${fmtDate(lastI.date)}`:'Never'}</span></td>
         <td><span style="font-size:12.5px;color:var(--text-muted)">${esc(freqLabel(c.frequency))}</span></td>
         <td>${dueCell}</td>
-        <td style="text-align:right">
-          <button class="btn btn-primary btn-sm" onclick="event.stopPropagation();openLogInteraction('${c.id}')">Log</button>
+        <td style="text-align:right;white-space:nowrap">
+          ${tab==='paused'
+            ? `<button class="btn btn-secondary btn-sm" onclick="event.stopPropagation();togglePause('${c.id}')">▶ Resume</button>`
+            : `<button class="btn btn-primary btn-sm" onclick="event.stopPropagation();openLogInteraction('${c.id}')">Log</button>`
+          }
         </td>
       </tr>`;
     }).join('');
@@ -1757,7 +1782,7 @@ function renderOverdue() {
       <table class="incomplete-table">
         <thead><tr>
           <th>Name</th><th>Categories</th><th>Last interaction</th><th>Frequency</th>
-          <th>${tab==='overdue'?'Overdue by':''}</th><th></th>
+          <th>${tab==='overdue'?'Overdue by':tab==='paused'?'Status':''}</th><th></th>
         </tr></thead>
         <tbody>${rowsHTML}</tbody>
       </table>
@@ -1855,8 +1880,8 @@ function buildCalendarEvents(year) {
       }
     });
 
-    // All recurring reminder due dates within the year
-    if (c.frequency) {
+    // All recurring reminder due dates within the year (skip paused contacts)
+    if (c.frequency && !c.paused) {
       const last = lastInteractionDate(c);
       const base = last ? new Date(last+'T00:00:00') : new Date();
       base.setHours(0,0,0,0);
