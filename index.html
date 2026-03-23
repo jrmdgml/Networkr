@@ -1,0 +1,1813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Networkr</title>
+<script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+<style>
+:root {
+  --bg: #f8fafc; --surface: #ffffff; --surface2: #f1f5f9;
+  --border: #e2e8f0; --text: #1e293b; --text-muted: #64748b;
+  --accent: #3b82f6; --accent-hover: #2563eb;
+  --danger: #ef4444; --warning: #f59e0b; --success: #10b981;
+  --purple: #8b5cf6;
+  --radius: 8px;
+  --shadow: 0 1px 3px rgba(0,0,0,.08), 0 1px 2px rgba(0,0,0,.05);
+  --shadow-lg: 0 10px 25px -5px rgba(0,0,0,.12), 0 4px 6px -2px rgba(0,0,0,.05);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--bg); color: var(--text);
+  height: 100vh; display: flex; flex-direction: column; overflow: hidden;
+}
+
+/* Header */
+header {
+  background: var(--surface); border-bottom: 1px solid var(--border);
+  padding: 0 20px; height: 58px; display: flex; align-items: center;
+  gap: 14px; flex-shrink: 0; z-index: 10;
+}
+.logo { font-weight: 800; font-size: 19px; color: var(--accent); letter-spacing: -0.5px; white-space: nowrap; }
+.logo span { color: var(--text); }
+.file-pill {
+  display: flex; align-items: center; gap: 6px;
+  background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 20px;
+  padding: 3px 10px; font-size: 12px; color: #15803d; font-weight: 500;
+  cursor: pointer; transition: all .15s; white-space: nowrap;
+}
+.file-pill:hover { background: #dcfce7; }
+.file-pill.no-file { background: #fff7ed; border-color: #fed7aa; color: #c2410c; }
+nav { display: flex; gap: 3px; }
+nav button {
+  padding: 6px 13px; border-radius: var(--radius); border: none;
+  background: none; cursor: pointer; font-size: 14px;
+  color: var(--text-muted); font-weight: 500; transition: all .15s;
+}
+nav button:hover { background: var(--surface2); color: var(--text); }
+nav button.active { background: var(--accent); color: white; }
+.header-right { margin-left: auto; display: flex; gap: 7px; align-items: center; }
+.search-wrap { position: relative; }
+.search-wrap input {
+  padding: 7px 12px 7px 30px; border: 1px solid var(--border);
+  border-radius: var(--radius); font-size: 14px; width: 190px;
+  background: var(--surface2); outline: none; transition: all .15s;
+}
+.search-wrap input:focus { border-color: var(--accent); background: white; box-shadow: 0 0 0 3px rgba(59,130,246,.1); }
+.search-icon { position: absolute; left: 9px; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 13px; pointer-events: none; }
+
+/* Buttons */
+.btn {
+  padding: 7px 13px; border-radius: var(--radius); border: none;
+  cursor: pointer; font-size: 13px; font-weight: 500;
+  transition: all .15s; display: inline-flex; align-items: center; gap: 5px; white-space: nowrap;
+}
+.btn-primary { background: var(--accent); color: white; }
+.btn-primary:hover { background: var(--accent-hover); }
+.btn-secondary { background: var(--surface2); color: var(--text); border: 1px solid var(--border); }
+.btn-secondary:hover { background: var(--border); }
+.btn-success { background: var(--success); color: white; }
+.btn-success:hover { opacity: .9; }
+.btn-danger { background: var(--danger); color: white; }
+.btn-danger:hover { opacity: .88; }
+.btn-ghost { background: none; border: none; color: var(--text-muted); cursor: pointer; padding: 5px 8px; border-radius: var(--radius); font-size: 13px; }
+.btn-ghost:hover { background: var(--surface2); color: var(--text); }
+.btn-sm { padding: 5px 10px; font-size: 12px; }
+
+/* Layout */
+.app-body { display: flex; flex: 1; overflow: hidden; }
+
+/* Startup screen */
+#startupScreen {
+  position: fixed; inset: 0; background: var(--bg);
+  display: flex; align-items: center; justify-content: center; z-index: 999;
+}
+.startup-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 16px; padding: 40px 48px; text-align: center;
+  box-shadow: var(--shadow-lg); max-width: 480px; width: 100%;
+}
+.startup-logo { font-size: 32px; font-weight: 800; color: var(--accent); margin-bottom: 6px; }
+.startup-logo span { color: var(--text); }
+.startup-sub { color: var(--text-muted); font-size: 14px; margin-bottom: 28px; line-height: 1.5; }
+.startup-options { display: flex; flex-direction: column; gap: 10px; }
+.startup-opt {
+  padding: 14px 18px; border-radius: 10px; border: 2px solid var(--border);
+  cursor: pointer; text-align: left; background: var(--surface);
+  transition: all .15s; display: flex; gap: 14px; align-items: center;
+}
+.startup-opt:hover { border-color: var(--accent); background: #eff6ff; }
+.startup-opt-icon { font-size: 22px; flex-shrink: 0; }
+.startup-opt-title { font-weight: 600; font-size: 14px; margin-bottom: 2px; }
+.startup-opt-desc { font-size: 12px; color: var(--text-muted); line-height: 1.4; }
+.startup-note { margin-top: 16px; font-size: 12px; color: var(--text-muted); padding: 10px 14px; background: #fffbeb; border-radius: 8px; border: 1px solid #fde68a; line-height: 1.5; }
+.startup-note.error { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+/* Sidebar */
+aside {
+  width: 210px; background: var(--surface); border-right: 1px solid var(--border);
+  padding: 12px 0; overflow-y: auto; flex-shrink: 0;
+}
+.sidebar-section { padding: 4px 10px; }
+.sidebar-label { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .7px; color: var(--text-muted); padding: 8px 6px 4px; }
+.sidebar-item {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 6px 8px; border-radius: 6px; cursor: pointer; font-size: 13.5px;
+  transition: all .12s; color: var(--text); border: none;
+  background: none; width: 100%; text-align: left; gap: 6px;
+}
+.sidebar-item:hover { background: var(--surface2); }
+.sidebar-item.active { background: #eff6ff; color: var(--accent); font-weight: 600; }
+.sidebar-item-label { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.sidebar-count { font-size: 11px; background: var(--surface2); padding: 1px 6px; border-radius: 10px; color: var(--text-muted); flex-shrink: 0; }
+.sidebar-item.active .sidebar-count { background: #dbeafe; color: var(--accent); }
+.sidebar-divider { height: 1px; background: var(--border); margin: 8px 0; }
+.sidebar-action { padding: 4px 10px; }
+
+/* Main */
+main { flex: 1; overflow-y: auto; padding: 22px 24px; }
+
+/* Stats */
+.stats-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-bottom: 22px; }
+.stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 13px 16px; box-shadow: var(--shadow); }
+.stat-number { font-size: 24px; font-weight: 700; line-height: 1; margin-bottom: 4px; }
+.stat-label { font-size: 11.5px; color: var(--text-muted); font-weight: 500; }
+
+/* Section heading */
+.section-heading { display: flex; align-items: center; gap: 8px; font-size: 16px; font-weight: 600; margin-bottom: 14px; }
+.section-heading .badge { font-size: 12px; padding: 2px 8px; border-radius: 20px; font-weight: 600; }
+
+/* Cards */
+.card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(275px, 1fr)); gap: 10px; margin-bottom: 24px; }
+.reminder-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 10px; padding: 14px 16px; display: flex;
+  flex-direction: column; gap: 9px; box-shadow: var(--shadow); transition: box-shadow .15s;
+}
+.reminder-card:hover { box-shadow: var(--shadow-lg); }
+.reminder-card.overdue { border-left: 3px solid var(--danger); }
+.reminder-card.upcoming { border-left: 3px solid var(--warning); }
+.reminder-card.birthday { border-left: 3px solid var(--purple); }
+.contact-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 10px; padding: 14px 16px; cursor: pointer;
+  display: flex; flex-direction: column; gap: 9px;
+  box-shadow: var(--shadow); transition: all .15s;
+}
+.contact-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-1px); }
+.card-header { display: flex; align-items: center; gap: 10px; }
+.card-info h4 { font-size: 14.5px; font-weight: 600; }
+.card-info p { font-size: 12.5px; color: var(--text-muted); margin-top: 1px; }
+.card-cats { display: flex; flex-wrap: wrap; gap: 4px; }
+.card-footer { display: flex; align-items: center; justify-content: space-between; }
+.card-footer-right { display: flex; gap: 5px; }
+
+/* Avatar */
+.avatar { width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; flex-shrink: 0; letter-spacing: -.5px; }
+.avatar-lg { width: 48px; height: 48px; font-size: 18px; }
+
+/* Badges */
+.cat-badge { font-size: 11.5px; padding: 2px 8px; border-radius: 20px; font-weight: 500; }
+.tag-chip { font-size: 12px; padding: 2px 8px; border-radius: 20px; background: #f1f5f9; color: var(--text-muted); cursor: pointer; border: none; font-family: inherit; transition: all .12s; }
+.tag-chip:hover { background: #e2e8f0; color: var(--text); }
+.status-badge { display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px; border-radius: 20px; font-size: 12px; font-weight: 600; }
+.status-overdue  { background: #fef2f2; color: var(--danger); }
+.status-upcoming { background: #fffbeb; color: var(--warning); }
+.status-birthday { background: #f5f3ff; color: var(--purple); }
+.status-ok   { background: #f0fdf4; color: var(--success); }
+.status-none { background: var(--surface2); color: var(--text-muted); }
+.due-label { font-size: 12.5px; }
+.due-label.overdue  { color: var(--danger);  font-weight: 600; }
+.due-label.upcoming { color: var(--warning); font-weight: 600; }
+.due-label.birthday { color: var(--purple);  font-weight: 600; }
+
+/* Empty state */
+.empty-state { text-align: center; padding: 60px 24px; color: var(--text-muted); }
+.empty-state .empty-icon { font-size: 50px; margin-bottom: 14px; }
+.empty-state h3 { font-size: 17px; color: var(--text); margin-bottom: 8px; }
+.empty-state p { font-size: 13.5px; margin-bottom: 18px; line-height: 1.5; }
+
+/* Modal */
+.modal-overlay {
+  position: fixed; inset: 0; background: rgba(15,23,42,.45);
+  display: flex; align-items: center; justify-content: center; z-index: 1000; padding: 16px;
+}
+.modal { background: var(--surface); border-radius: 12px; box-shadow: var(--shadow-lg); width: 100%; max-width: 540px; max-height: 92vh; display: flex; flex-direction: column; overflow: hidden; }
+.modal-lg  { max-width: 740px; }
+.modal-xl  { max-width: 900px; }
+.modal-sm  { max-width: 400px; }
+.modal-header { padding: 18px 22px 14px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; }
+.modal-header h2 { font-size: 17px; font-weight: 600; }
+.modal-close { width: 30px; height: 30px; border-radius: 6px; border: none; background: none; cursor: pointer; font-size: 20px; color: var(--text-muted); display: flex; align-items: center; justify-content: center; line-height: 1; }
+.modal-close:hover { background: var(--surface2); color: var(--text); }
+.modal-body { padding: 18px 22px; overflow-y: auto; flex: 1; }
+.modal-footer { padding: 14px 22px; border-top: 1px solid var(--border); display: flex; justify-content: flex-end; gap: 8px; flex-shrink: 0; }
+.modal-footer-split { justify-content: space-between; }
+
+/* Forms */
+.form-group { margin-bottom: 14px; }
+.form-row  { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.form-row3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+label { display: block; font-size: 13px; font-weight: 500; margin-bottom: 5px; color: var(--text); }
+label .opt { font-weight: 400; color: var(--text-muted); }
+input[type=text], input[type=email], input[type=tel], input[type=date], select, textarea {
+  width: 100%; padding: 8px 11px; border: 1px solid var(--border);
+  border-radius: var(--radius); font-size: 13.5px; font-family: inherit;
+  background: var(--surface); color: var(--text); outline: none; transition: all .15s;
+}
+input:focus, select:focus, textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(59,130,246,.1); }
+textarea { resize: vertical; min-height: 76px; line-height: 1.5; }
+.form-hint { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
+
+/* Tags input */
+.tags-input-wrap { border: 1px solid var(--border); border-radius: var(--radius); padding: 5px 7px; display: flex; flex-wrap: wrap; gap: 4px; cursor: text; min-height: 40px; transition: all .15s; align-items: center; }
+.tags-input-wrap:focus-within { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(59,130,246,.1); }
+.tags-input-wrap input { border: none !important; padding: 3px 4px !important; flex: 1; min-width: 80px; box-shadow: none !important; font-size: 13.5px; background: transparent; }
+.tag-pill { display: inline-flex; align-items: center; gap: 3px; background: #eff6ff; color: #2563eb; border-radius: 20px; padding: 2px 4px 2px 9px; font-size: 12.5px; font-weight: 500; }
+.tag-pill-remove { border: none; background: none; cursor: pointer; color: #93c5fd; padding: 0 3px; font-size: 15px; line-height: 1; display: flex; align-items: center; }
+.tag-pill-remove:hover { color: var(--danger); }
+.tag-suggestions-wrap { position: relative; }
+.tag-suggestions { position: absolute; left: 0; right: 0; top: calc(100% + 2px); z-index: 200; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow-lg); max-height: 160px; overflow-y: auto; display: none; }
+.tag-suggestions.show { display: block; }
+.tag-sug-item { padding: 7px 12px; cursor: pointer; font-size: 13px; }
+.tag-sug-item:hover { background: var(--surface2); }
+
+/* Category picker */
+.cat-picker { display: flex; flex-wrap: wrap; gap: 6px; }
+.cat-check { display: none; }
+.cat-check-label { padding: 5px 12px; border-radius: 20px; border: 2px solid var(--border); font-size: 13px; cursor: pointer; transition: all .15s; font-weight: 500; user-select: none; }
+.cat-check:checked + .cat-check-label { border-color: var(--accent); background: #eff6ff; color: var(--accent); }
+
+/* Detail modal */
+.detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.detail-section { margin-bottom: 20px; }
+.detail-section-title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .6px; color: var(--text-muted); margin-bottom: 10px; padding-bottom: 7px; border-bottom: 1px solid var(--border); }
+.detail-row { display: flex; gap: 8px; margin-bottom: 7px; font-size: 13.5px; }
+.detail-key { color: var(--text-muted); min-width: 90px; flex-shrink: 0; font-size: 12.5px; }
+.detail-val { color: var(--text); font-weight: 500; word-break: break-word; }
+.detail-val a { color: var(--accent); text-decoration: none; }
+.detail-val a:hover { text-decoration: underline; }
+
+/* Interaction history */
+.interaction-list { display: flex; flex-direction: column; gap: 8px; }
+.interaction-item { background: var(--surface2); border-radius: 8px; padding: 10px 12px; display: flex; gap: 10px; align-items: flex-start; }
+.interaction-icon { width: 30px; height: 30px; border-radius: 50%; background: var(--surface); display: flex; align-items: center; justify-content: center; font-size: 13px; flex-shrink: 0; box-shadow: var(--shadow); }
+.interaction-body { flex: 1; min-width: 0; }
+.interaction-type { font-size: 13px; font-weight: 600; }
+.interaction-date { font-size: 12px; color: var(--text-muted); margin-top: 1px; }
+.interaction-notes { font-size: 12.5px; color: var(--text-muted); margin-top: 4px; line-height: 1.4; }
+.interaction-delete { border: none; background: none; cursor: pointer; color: #cbd5e1; font-size: 16px; padding: 0 4px; flex-shrink: 0; line-height: 1; }
+.interaction-delete:hover { color: var(--danger); }
+
+/* Manage categories */
+.cat-manage-item { display: flex; align-items: center; justify-content: space-between; padding: 8px 12px; background: var(--surface2); border-radius: 7px; margin-bottom: 6px; }
+
+/* Excel import */
+.mapping-table { width: 100%; border-collapse: collapse; }
+.mapping-table th { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; color: var(--text-muted); padding: 8px 10px; text-align: left; border-bottom: 2px solid var(--border); }
+.mapping-table td { padding: 7px 10px; border-bottom: 1px solid var(--border); font-size: 13.5px; vertical-align: middle; }
+.mapping-table tr:last-child td { border-bottom: none; }
+.mapping-table td:first-child { font-weight: 500; white-space: nowrap; }
+.mapping-table select { font-size: 13px; padding: 5px 8px; }
+.preview-table { width: 100%; border-collapse: collapse; font-size: 12px; overflow-x: auto; display: block; }
+.preview-table th { background: var(--surface2); padding: 6px 10px; text-align: left; font-weight: 600; white-space: nowrap; border: 1px solid var(--border); }
+.preview-table td { padding: 5px 10px; border: 1px solid var(--border); max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--text-muted); }
+
+/* Toast */
+#toast { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: #1e293b; color: white; padding: 9px 18px; border-radius: 8px; font-size: 13px; font-weight: 500; z-index: 9999; opacity: 0; transition: opacity .25s; pointer-events: none; white-space: nowrap; }
+#toast.show { opacity: 1; }
+
+/* Avatar colors */
+.av0{background:#dbeafe;color:#1d4ed8} .av1{background:#dcfce7;color:#15803d}
+.av2{background:#f3e8ff;color:#7e22ce} .av3{background:#ffedd5;color:#c2410c}
+.av4{background:#ffe4e6;color:#be123c} .av5{background:#ccfbf1;color:#0f766e}
+.av6{background:#fef9c3;color:#a16207} .av7{background:#ede9fe;color:#6d28d9}
+
+/* Category colors */
+.cc0{background:#eff6ff;color:#2563eb} .cc1{background:#f0fdf4;color:#16a34a}
+.cc2{background:#fdf4ff;color:#9333ea} .cc3{background:#fff7ed;color:#ea580c}
+.cc4{background:#fff1f2;color:#e11d48} .cc5{background:#f0fdfa;color:#0d9488}
+.cc6{background:#fefce8;color:#ca8a04} .cc7{background:#f5f3ff;color:#7c3aed}
+
+/* Incomplete tab */
+.missing-badge { font-size: 11px; padding: 2px 7px; border-radius: 20px; background: #fef2f2; color: var(--danger); font-weight: 500; display: inline-block; }
+.completeness-bar-wrap { background: var(--surface2); border-radius: 4px; height: 6px; overflow: hidden; display: inline-block; width: 100px; vertical-align: middle; margin-left: 6px; }
+.completeness-bar { height: 100%; border-radius: 4px; background: var(--success); transition: width .3s; }
+.incomplete-table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+.incomplete-table th { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; color: var(--text-muted); padding: 8px 12px; text-align: left; border-bottom: 2px solid var(--border); }
+.incomplete-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+.incomplete-table tr:last-child td { border-bottom: none; }
+.incomplete-table tr:hover td { background: var(--surface2); cursor: pointer; }
+
+/* Calendar */
+.cal-year-nav { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
+.cal-year-nav h2 { font-size: 20px; font-weight: 700; }
+.cal-grid-months { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; }
+.cal-month { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 12px; }
+.cal-month-title { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; color: var(--text-muted); margin-bottom: 8px; text-align: center; }
+.cal-dow-row { display: grid; grid-template-columns: repeat(7,1fr); text-align: center; font-size: 10px; font-weight: 600; color: var(--text-muted); margin-bottom: 4px; }
+.cal-days { display: grid; grid-template-columns: repeat(7,1fr); gap: 2px; }
+.cal-day { min-height: 30px; border-radius: 5px; padding: 2px 1px; display: flex; flex-direction: column; align-items: center; font-size: 11px; cursor: default; position: relative; }
+.cal-day.has-events { cursor: pointer; }
+.cal-day.has-events:hover { background: var(--surface2); }
+.cal-day.today .cal-day-num { background: var(--accent); color: white; border-radius: 50%; width: 18px; height: 18px; display: flex; align-items: center; justify-content: center; font-weight: 700; }
+.cal-day-num { width: 18px; height: 18px; display: flex; align-items: center; justify-content: center; }
+.cal-day.filler { opacity: 0; pointer-events: none; }
+.cal-dots { display: flex; gap: 2px; flex-wrap: wrap; justify-content: center; margin-top: 2px; }
+.cal-dot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; }
+.cal-dot-birthday { background: var(--purple); }
+.cal-dot-interaction { background: var(--success); }
+.cal-dot-reminder { background: var(--warning); }
+@media (max-width: 1100px) { .cal-grid-months { grid-template-columns: repeat(3,1fr); } }
+@media (max-width: 800px)  { .cal-grid-months { grid-template-columns: repeat(2,1fr); } }
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+@media (max-width: 900px) {
+  aside { display: none; }
+  .stats-row { grid-template-columns: repeat(3,1fr); }
+  .detail-grid { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  .form-row3 { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- Startup -->
+<div id="startupScreen" style="display:none">
+  <div class="startup-card">
+    <div class="startup-logo">Network<span>r</span></div>
+    <div class="startup-sub">Your data lives in a real file on your computer.<br>Save it in OneDrive or Dropbox for automatic cloud backup.</div>
+    <div class="startup-options">
+      <div class="startup-opt" onclick="pickExistingFile()">
+        <div class="startup-opt-icon">📂</div>
+        <div>
+          <div class="startup-opt-title">Open existing data file</div>
+          <div class="startup-opt-desc">Pick your <code>networkr-data.json</code> to continue where you left off.</div>
+        </div>
+      </div>
+      <div class="startup-opt" onclick="createNewFile()">
+        <div class="startup-opt-icon">✨</div>
+        <div>
+          <div class="startup-opt-title">Create a new data file</div>
+          <div class="startup-opt-desc">Choose a folder and start fresh. Tip: save inside OneDrive or Dropbox.</div>
+        </div>
+      </div>
+    </div>
+    <div id="startupNote" class="startup-note" style="display:none"></div>
+  </div>
+</div>
+
+<!-- App -->
+<header id="appHeader" style="display:none">
+  <div class="logo">Network<span>r</span></div>
+  <div id="filePill" class="file-pill no-file" onclick="changeFile()" title="Click to change file">&#128196; No file</div>
+  <nav>
+    <button id="nav-dashboard" onclick="setView('dashboard')">Dashboard</button>
+    <button id="nav-contacts" onclick="setView('contacts')">Contacts</button>
+    <button id="nav-incomplete" onclick="setView('incomplete')">Incomplete</button>
+    <button id="nav-calendar" onclick="setView('calendar')">Calendar</button>
+  </nav>
+  <div class="header-right">
+    <div class="search-wrap">
+      <span class="search-icon">&#128269;</span>
+      <input type="text" id="searchInput" placeholder="Search..." oninput="onSearch()" />
+    </div>
+    <button class="btn btn-primary" onclick="openAddContact()">+ Add Contact</button>
+    <button class="btn btn-success btn-sm" onclick="openExcelImport()">&#128202; Import Excel</button>
+  </div>
+</header>
+
+<div id="appBody" class="app-body" style="display:none">
+  <aside id="sidebar"></aside>
+  <main id="main"></main>
+</div>
+
+<div id="modals"></div>
+<div id="toast"></div>
+
+<script>
+// ============================================================
+// STATE
+// ============================================================
+let db = {
+  contacts: [],
+  categories: ['Harvard', 'MIT', 'Belgium', 'Medicine'],
+  settings: { reminderLeadDays: 30 }
+};
+
+let state = {
+  view: 'dashboard',
+  filterType: null,   // 'category' | 'country' | 'industry' | 'tag'
+  filterValue: null,
+  search: '',
+  calendarYear: new Date().getFullYear()
+};
+
+let _sidebarCats       = [];
+let _sidebarCountries  = [];
+let _sidebarIndustries = [];
+let _sidebarTags       = [];
+let _detailTags        = [];
+
+// ============================================================
+// INDEXEDDB + FILE SYSTEM ACCESS API
+// ============================================================
+let fileHandle = null;
+
+function openIDB() {
+  return new Promise((res, rej) => {
+    const r = indexedDB.open('networkr_meta', 1);
+    r.onupgradeneeded = () => r.result.createObjectStore('kv');
+    r.onsuccess = () => res(r.result);
+    r.onerror   = () => rej(r.error);
+  });
+}
+async function idbSet(k, v) {
+  const db = await openIDB();
+  return new Promise((res, rej) => { const tx = db.transaction('kv','readwrite'); tx.objectStore('kv').put(v,k); tx.oncomplete=res; tx.onerror=()=>rej(tx.error); });
+}
+async function idbGet(k) {
+  const db = await openIDB();
+  return new Promise((res, rej) => { const tx = db.transaction('kv','readonly'); const r=tx.objectStore('kv').get(k); r.onsuccess=()=>res(r.result); r.onerror=()=>rej(r.error); });
+}
+
+async function readFromFile() {
+  const file = await fileHandle.getFile();
+  const text = await file.text();
+  if (!text.trim()) return;
+  const parsed = JSON.parse(text);
+  if (!Array.isArray(parsed.contacts)) throw new Error('Unrecognised file format');
+  db = { ...db, ...parsed };
+}
+
+async function saveDB() {
+  if (!fileHandle) return;
+  try {
+    const w = await fileHandle.createWritable();
+    await w.write(JSON.stringify(db, null, 2));
+    await w.close();
+  } catch(e) { showToast('Save failed: ' + e.message); }
+}
+
+async function init() {
+  if (!('showOpenFilePicker' in window)) { showUnsupportedBrowser(); return; }
+  try {
+    const saved = await idbGet('fileHandle');
+    if (saved) {
+      const perm = await saved.queryPermission({ mode: 'readwrite' });
+      if (perm === 'granted') { fileHandle = saved; await readFromFile(); launchApp(); return; }
+    }
+  } catch(e) {}
+  showStartupScreen();
+}
+
+function showStartupScreen() { document.getElementById('startupScreen').style.display = 'flex'; }
+function hideStartupScreen() { document.getElementById('startupScreen').style.display = 'none'; }
+
+function launchApp() {
+  hideStartupScreen();
+  document.getElementById('appHeader').style.display = 'flex';
+  document.getElementById('appBody').style.display   = 'flex';
+  updateFilePill();
+  setView('dashboard');
+}
+
+async function pickExistingFile() {
+  try {
+    [fileHandle] = await window.showOpenFilePicker({ id:'networkr', types:[{description:'Networkr Data',accept:{'application/json':['.json']}}], multiple:false });
+    await idbSet('fileHandle', fileHandle);
+    await readFromFile();
+    launchApp();
+  } catch(e) { if (e.name!=='AbortError') setStartupNote('Could not open the file: '+e.message, true); }
+}
+
+async function createNewFile() {
+  try {
+    fileHandle = await window.showSaveFilePicker({ id:'networkr', suggestedName:'networkr-data.json', types:[{description:'Networkr Data',accept:{'application/json':['.json']}}] });
+    await idbSet('fileHandle', fileHandle);
+    await saveDB();
+    launchApp();
+  } catch(e) { if (e.name!=='AbortError') setStartupNote('Could not create the file: '+e.message, true); }
+}
+
+async function changeFile() {
+  try { const p = await fileHandle.requestPermission({mode:'readwrite'}); if (p==='granted'){showToast('File access confirmed'); updateFilePill(); return;} } catch(e) {}
+  document.getElementById('appHeader').style.display = 'none';
+  document.getElementById('appBody').style.display   = 'none';
+  showStartupScreen();
+}
+
+function setStartupNote(msg, isError=false) {
+  const el = document.getElementById('startupNote');
+  el.textContent = msg; el.className = 'startup-note'+(isError?' error':''); el.style.display='block';
+}
+
+function updateFilePill() {
+  const p = document.getElementById('filePill');
+  if (fileHandle) { p.textContent='📄 '+fileHandle.name; p.className='file-pill'; }
+  else { p.textContent='📄 No file'; p.className='file-pill no-file'; }
+}
+
+function showUnsupportedBrowser() {
+  document.getElementById('startupScreen').style.display = 'flex';
+  document.getElementById('startupScreen').innerHTML = `
+    <div class="startup-card">
+      <div class="startup-logo">Network<span>r</span></div>
+      <div class="startup-sub">Your browser doesn't support direct file saving.<br><strong>Please use Google Chrome or Microsoft Edge.</strong></div>
+      <div class="startup-note error" style="display:block">Firefox does not support the File System Access API. Chrome and Edge save directly to a file on your computer.</div>
+      <div style="margin-top:16px"><button class="btn btn-secondary" onclick="useFallback()" style="width:100%;justify-content:center">Continue with localStorage (not recommended)</button></div>
+    </div>`;
+}
+
+function useFallback() {
+  try { const r=localStorage.getItem('networkr_v2'); if(r){const d=JSON.parse(r);if(d.contacts)db={...db,...d};} } catch(e){}
+  window.saveDB = function(){ localStorage.setItem('networkr_v2',JSON.stringify(db)); };
+  hideStartupScreen();
+  document.getElementById('appHeader').style.display='flex';
+  document.getElementById('appBody').style.display='flex';
+  document.getElementById('filePill').textContent='⚠ localStorage';
+  document.getElementById('filePill').className='file-pill no-file';
+  setView('dashboard');
+}
+
+// ============================================================
+// CONSTANTS
+// ============================================================
+const INTERACTION_TYPES = [
+  {id:'phone',        label:'Phone Call',      icon:'📞'},
+  {id:'sms',          label:'SMS / Text',      icon:'💬'},
+  {id:'whatsapp',     label:'WhatsApp',        icon:'🟢'},
+  {id:'messenger',    label:'Messenger',       icon:'💙'},
+  {id:'instagram',    label:'Instagram DM',    icon:'📸'},
+  {id:'email',        label:'Email',           icon:'📧'},
+  {id:'coffee',       label:'Coffee / Meeting',icon:'☕'},
+  {id:'linkedin',     label:'LinkedIn',        icon:'💼'},
+  {id:'gift',         label:'Gift',            icon:'🎁'},
+  {id:'other',        label:'Other',           icon:'✨'},
+  // legacy — kept for backward compatibility with existing data
+  {id:'message',      label:'Message/Text',    icon:'💬'},
+];
+
+const FREQ_OPTIONS = [
+  {value:7,   label:'Every week'},
+  {value:30,  label:'Every month'},
+  {value:90,  label:'Every quarter'},
+  {value:180, label:'Every 6 months'},
+  {value:365, label:'Every year'},
+  {value:0,   label:'No reminder'}
+];
+
+// Networkr fields available for Excel column mapping
+const IMPORT_FIELDS = [
+  {id:'',                label:'— skip —'},
+  {id:'name',            label:'Full Name'},
+  {id:'firstName',       label:'First Name'},
+  {id:'lastName',        label:'Last Name'},
+  {id:'email',           label:'Email'},
+  {id:'phone',           label:'Phone'},
+  {id:'country',         label:'Country'},
+  {id:'industry',        label:'Industry'},
+  {id:'birthday',        label:'Birthday'},
+  {id:'address',         label:'Mailing Address'},
+  {id:'linkedin',        label:'LinkedIn URL'},
+  {id:'instagram',       label:'Instagram'},
+  {id:'categories',      label:'Categories (comma-sep)'},
+  {id:'tags',            label:'Tags (comma-sep)'},
+  {id:'notes',           label:'Notes'},
+];
+
+// ============================================================
+// UTILITIES
+// ============================================================
+function uid() { return Date.now().toString(36)+Math.random().toString(36).slice(2); }
+function initials(name) { return (name||'?').trim().split(/\s+/).map(w=>w[0]).join('').toUpperCase().slice(0,2); }
+function avClass(name) { let h=0; for(const c of(name||''))h=(h*31+c.charCodeAt(0))&0xffff; return 'av'+(h%8); }
+function ccClass(cat) { const i=db.categories.indexOf(cat); return 'cc'+((i<0?0:i)%8); }
+function esc(s) { if(s==null)return''; return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#x27;'); }
+
+// Birthday stored as "YYYY-MM-DD" (year known) or "0000-MM-DD" (year unknown)
+function parseBirthday(str) {
+  if (!str) return null;
+  const parts = str.split('-');
+  if (parts.length !== 3) return null;
+  const yearKnown = parts[0] !== '0000';
+  return { year: yearKnown ? parseInt(parts[0]) : null, month: parseInt(parts[1]), day: parseInt(parts[2]), yearKnown };
+}
+
+function fmtDate(d) {
+  if (!d) return 'Never';
+  if (d.startsWith('0000-')) {
+    const b = parseBirthday(d);
+    if (!b) return d;
+    return new Date(2000, b.month-1, b.day).toLocaleDateString('en-GB', {day:'numeric', month:'short'});
+  }
+  return new Date(d+'T00:00:00').toLocaleDateString('en-GB', {day:'numeric', month:'short', year:'numeric'});
+}
+
+function daysSince(d) { if(!d)return null; return Math.floor((Date.now()-new Date(d+'T00:00:00').getTime())/86400000); }
+
+function calculateAge(birthday) {
+  const b = parseBirthday(birthday);
+  if (!b || !b.yearKnown) return null;
+  const today = new Date();
+  let age = today.getFullYear() - b.year;
+  if (today.getMonth()+1 < b.month || (today.getMonth()+1 === b.month && today.getDate() < b.day)) age--;
+  return age;
+}
+
+function daysUntilBirthday(birthday) {
+  const b = parseBirthday(birthday);
+  if (!b) return null;
+  const today = new Date(); today.setHours(0,0,0,0);
+  let next = new Date(today.getFullYear(), b.month-1, b.day);
+  if (next <= today) next = new Date(today.getFullYear()+1, b.month-1, b.day);
+  return Math.round((next - today) / 86400000);
+}
+
+function daysUntilDue(c) {
+  if (c.nextInteractionDate) {
+    const today = new Date(); today.setHours(0,0,0,0);
+    const due = new Date(c.nextInteractionDate+'T00:00:00');
+    return Math.round((due - today) / 86400000);
+  }
+  if (!c.frequency) return null;
+  const last = lastInteractionDate(c);
+  if (!last) return -9999;
+  return c.frequency - daysSince(last);
+}
+function lastInteractionDate(c) {
+  if (!c.interactions||c.interactions.length===0) return null;
+  return c.interactions[c.interactions.length-1].date;
+}
+function contactStatus(c) {
+  const d = daysUntilDue(c);
+  if (d===null) return 'none';
+  if (d<0) return 'overdue';
+  if (d<=db.settings.reminderLeadDays) return 'upcoming';
+  return 'ok';
+}
+function itype(id) { return INTERACTION_TYPES.find(t=>t.id===id)||{label:'Other',icon:'✨'}; }
+function freqLabel(v) { return (FREQ_OPTIONS.find(f=>f.value===v)||{label:'Not set'}).label; }
+
+function getMissingFields(c) {
+  const missing = [];
+  if (!c.email)    missing.push('Email');
+  if (!c.phone)    missing.push('Phone');
+  if (!c.address)  missing.push('Address');
+  if (!c.country)  missing.push('Country');
+  if (!c.industry) missing.push('Industry');
+  if (c.celebrateBirthday && !c.birthday) missing.push('Birthday');
+  return missing;
+}
+function isComplete(c) { return c.markedComplete || getMissingFields(c).length === 0; }
+
+let _toastTimer;
+function showToast(msg) {
+  const el = document.getElementById('toast');
+  el.textContent=msg; el.classList.add('show');
+  clearTimeout(_toastTimer); _toastTimer=setTimeout(()=>el.classList.remove('show'),2800);
+}
+
+// ============================================================
+// NAVIGATION
+// ============================================================
+function setView(v) {
+  state.view=v;
+  document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));
+  const btn=document.getElementById('nav-'+v); if(btn)btn.classList.add('active');
+  render();
+}
+function clearFilter() { state.filterType=null;state.filterValue=null;state.search='';document.getElementById('searchInput').value=''; setView('contacts'); }
+function filterByCat(i)      { state.filterType='category'; state.filterValue=_sidebarCats[i];       state.search='';document.getElementById('searchInput').value=''; setView('contacts'); }
+function filterByCountry(i)  { state.filterType='country';  state.filterValue=_sidebarCountries[i];  state.search='';document.getElementById('searchInput').value=''; setView('contacts'); }
+function filterByIndustry(i) { state.filterType='industry'; state.filterValue=_sidebarIndustries[i]; state.search='';document.getElementById('searchInput').value=''; setView('contacts'); }
+function filterByTag(i)      { state.filterType='tag';      state.filterValue=_sidebarTags[i];        state.search='';document.getElementById('searchInput').value=''; setView('contacts'); }
+function filterByDetailTag(i){ closeModal(); state.filterType='tag'; state.filterValue=_detailTags[i]; setView('contacts'); }
+function onSearch() { state.search=document.getElementById('searchInput').value.toLowerCase(); if(state.view!=='contacts')setView('contacts'); else render(); }
+
+// ============================================================
+// FILTERING
+// ============================================================
+function filteredContacts() {
+  let list = [...db.contacts];
+  if (state.search) {
+    list = list.filter(c =>
+      c.name.toLowerCase().includes(state.search) ||
+      (c.email||'').toLowerCase().includes(state.search) ||
+      (c.country||'').toLowerCase().includes(state.search) ||
+      (c.industry||'').toLowerCase().includes(state.search) ||
+      (c.notes||'').toLowerCase().includes(state.search) ||
+      (c.tags||[]).some(t=>t.toLowerCase().includes(state.search)) ||
+      (c.categories||[]).some(cat=>cat.toLowerCase().includes(state.search))
+    );
+  }
+  if      (state.filterType==='category') list=list.filter(c=>(c.categories||[]).includes(state.filterValue));
+  else if (state.filterType==='country')  list=list.filter(c=>c.country===state.filterValue);
+  else if (state.filterType==='industry') list=list.filter(c=>c.industry===state.filterValue);
+  else if (state.filterType==='tag')      list=list.filter(c=>(c.tags||[]).includes(state.filterValue));
+  return list.sort((a,b)=>a.name.localeCompare(b.name));
+}
+
+// ============================================================
+// RENDER
+// ============================================================
+function render() {
+  renderSidebar();
+  if      (state.view==='dashboard')  renderDashboard();
+  else if (state.view==='contacts')   renderContacts();
+  else if (state.view==='incomplete') renderIncomplete();
+  else if (state.view==='calendar')   renderCalendar();
+}
+
+function renderSidebar() {
+  _sidebarCats = [...db.categories];
+
+  // Countries: unique non-empty values, sorted by frequency
+  const countryCount={}, industryCount={}, allTags={};
+  db.contacts.forEach(c => {
+    if(c.country)  countryCount[c.country]  = (countryCount[c.country]||0)+1;
+    if(c.industry) industryCount[c.industry]= (industryCount[c.industry]||0)+1;
+    (c.tags||[]).forEach(t=>{ allTags[t]=(allTags[t]||0)+1; });
+  });
+  _sidebarCountries  = Object.keys(countryCount).sort((a,b)=>countryCount[b]-countryCount[a]);
+  _sidebarIndustries = Object.keys(industryCount).sort((a,b)=>industryCount[b]-industryCount[a]);
+  _sidebarTags       = Object.keys(allTags).sort((a,b)=>allTags[b]-allTags[a]).slice(0,25);
+
+  const isAllActive = !state.filterType && !state.search;
+
+  const sidebarSection = (label, items, clickFn, countFn) => {
+    if (items.length===0) return '';
+    return `<div class="sidebar-divider"></div>
+    <div class="sidebar-section">
+      <div class="sidebar-label">${label}</div>
+      ${items.map((item,i) => {
+        const active = state.filterType===label.toLowerCase().replace(/s$/,'') && state.filterValue===item;
+        return `<button class="sidebar-item ${active?'active':''}" onclick="${clickFn}(${i})">
+          <span class="sidebar-item-label">${esc(item)}</span>
+          <span class="sidebar-count">${countFn(item)}</span>
+        </button>`;
+      }).join('')}
+    </div>`;
+  };
+
+  document.getElementById('sidebar').innerHTML = `
+    <div class="sidebar-section">
+      <button class="sidebar-item ${isAllActive?'active':''}" onclick="clearFilter()">
+        <span class="sidebar-item-label">All Contacts</span>
+        <span class="sidebar-count">${db.contacts.length}</span>
+      </button>
+    </div>
+    <div class="sidebar-divider"></div>
+    <div class="sidebar-section">
+      <div class="sidebar-label">Categories</div>
+      ${_sidebarCats.map((cat,i) => {
+        const count=db.contacts.filter(c=>(c.categories||[]).includes(cat)).length;
+        const active=state.filterType==='category'&&state.filterValue===cat;
+        return `<button class="sidebar-item ${active?'active':''}" onclick="filterByCat(${i})">
+          <span class="sidebar-item-label">${esc(cat)}</span>
+          <span class="sidebar-count">${count}</span>
+        </button>`;
+      }).join('')}
+    </div>
+    ${_sidebarCountries.length?`<div class="sidebar-divider"></div>
+    <div class="sidebar-section">
+      <div class="sidebar-label">Countries</div>
+      ${_sidebarCountries.map((c,i)=>{
+        const active=state.filterType==='country'&&state.filterValue===c;
+        return `<button class="sidebar-item ${active?'active':''}" onclick="filterByCountry(${i})">
+          <span class="sidebar-item-label">${esc(c)}</span>
+          <span class="sidebar-count">${countryCount[c]}</span>
+        </button>`;
+      }).join('')}
+    </div>`:''}
+    ${_sidebarIndustries.length?`<div class="sidebar-divider"></div>
+    <div class="sidebar-section">
+      <div class="sidebar-label">Industries</div>
+      ${_sidebarIndustries.map((ind,i)=>{
+        const active=state.filterType==='industry'&&state.filterValue===ind;
+        return `<button class="sidebar-item ${active?'active':''}" onclick="filterByIndustry(${i})">
+          <span class="sidebar-item-label">${esc(ind)}</span>
+          <span class="sidebar-count">${industryCount[ind]}</span>
+        </button>`;
+      }).join('')}
+    </div>`:''}
+    ${_sidebarTags.length?`<div class="sidebar-divider"></div>
+    <div class="sidebar-section">
+      <div class="sidebar-label">Tags</div>
+      ${_sidebarTags.map((tag,i)=>{
+        const active=state.filterType==='tag'&&state.filterValue===tag;
+        return `<button class="sidebar-item ${active?'active':''}" onclick="filterByTag(${i})">
+          <span class="sidebar-item-label">${esc(tag)}</span>
+          <span class="sidebar-count">${allTags[tag]}</span>
+        </button>`;
+      }).join('')}
+    </div>`:'<div class="sidebar-divider"></div><div class="sidebar-section"><div style="font-size:12px;color:var(--text-muted);padding:4px 6px">No tags yet</div></div>'}
+    <div class="sidebar-divider"></div>
+    <div class="sidebar-action">
+      <button class="btn btn-secondary btn-sm" style="width:100%" onclick="openManageCategories()">Manage Categories</button>
+    </div>
+  `;
+}
+
+function renderDashboard() {
+  const overdue  = db.contacts.filter(c=>contactStatus(c)==='overdue');
+  const upcoming = db.contacts.filter(c=>contactStatus(c)==='upcoming');
+  const totalI   = db.contacts.reduce((s,c)=>s+(c.interactions||[]).length,0);
+
+  // Upcoming birthdays (within 14 days, only for contacts with celebrateBirthday=true)
+  const birthdays = db.contacts
+    .filter(c=>c.celebrateBirthday && c.birthday)
+    .map(c=>({c, days:daysUntilBirthday(c.birthday)}))
+    .filter(x=>x.days!==null && x.days<=14)
+    .sort((a,b)=>a.days-b.days);
+
+  const incomplete = db.contacts.filter(c=>!isComplete(c));
+
+  let html = `<div class="stats-row">
+    <div class="stat-card"><div class="stat-number" style="color:var(--accent)">${db.contacts.length}</div><div class="stat-label">Contacts</div></div>
+    <div class="stat-card"><div class="stat-number" style="color:var(--danger)">${overdue.length}</div><div class="stat-label">Overdue</div></div>
+    <div class="stat-card"><div class="stat-number" style="color:var(--warning)">${upcoming.length}</div><div class="stat-label">Due soon</div></div>
+    <div class="stat-card"><div class="stat-number" style="color:var(--purple)">${birthdays.length}</div><div class="stat-label">Birthdays in 14d</div></div>
+    <div class="stat-card"><div class="stat-number" style="color:var(--danger)">${incomplete.length}</div><div class="stat-label">Incomplete</div></div>
+  </div>`;
+
+  if (birthdays.length>0) {
+    html+=`<div class="section-heading"><span>Upcoming Birthdays</span><span class="badge status-birthday">${birthdays.length}</span></div>
+    <div class="card-grid">${birthdays.map(({c,days})=>birthdayCardHTML(c,days)).join('')}</div>`;
+  }
+  if (incomplete.length>0) {
+    html+=`<div class="section-heading" style="margin-top:8px"><span>Incomplete Profiles</span><span class="badge" style="background:#fef2f2;color:var(--danger)">${incomplete.length}</span>
+      <button class="btn btn-ghost btn-sm" style="margin-left:auto;font-size:12px" onclick="setView('incomplete')">View all →</button></div>`;
+  }
+  if (overdue.length>0) {
+    html+=`<div class="section-heading"><span>Overdue</span><span class="badge status-overdue">${overdue.length}</span></div>
+    <div class="card-grid">${overdue.map(c=>reminderCardHTML(c,'overdue')).join('')}</div>`;
+  }
+  if (upcoming.length>0) {
+    html+=`<div class="section-heading"><span>Coming Up</span><span class="badge status-upcoming">${upcoming.length}</span></div>
+    <div class="card-grid">${upcoming.map(c=>reminderCardHTML(c,'upcoming')).join('')}</div>`;
+  }
+  if (!overdue.length&&!upcoming.length&&!birthdays.length) {
+    html+=`<div class="empty-state"><div class="empty-icon">🎉</div><h3>All caught up!</h3><p>No interactions or birthdays due soon.</p><button class="btn btn-primary" onclick="setView('contacts')">View All Contacts</button></div>`;
+  }
+  document.getElementById('main').innerHTML=html;
+}
+
+function birthdayCardHTML(c, days) {
+  const age = calculateAge(c.birthday);
+  const cats = (c.categories||[]).slice(0,2).map(cat=>`<span class="cat-badge ${ccClass(cat)}">${esc(cat)}</span>`).join('');
+  const dueText = days===0 ? 'Today!' : `In ${days} day${days!==1?'s':''}`;
+  return `<div class="reminder-card birthday">
+    <div class="card-header">
+      <div class="avatar ${avClass(c.name)}">${esc(initials(c.name))}</div>
+      <div class="card-info">
+        <h4>${esc(c.name)}</h4>
+        <p>🎂 ${fmtDate(c.birthday)}${age!==null?' · turns '+(age+1):''}${c.country?' · '+esc(c.country):''}</p>
+      </div>
+    </div>
+    <div class="card-cats">${cats}</div>
+    <div class="card-footer">
+      <span class="due-label birthday">${dueText}</span>
+      <div class="card-footer-right">
+        <button class="btn btn-secondary btn-sm" onclick="openDetail('${c.id}')">View</button>
+        <button class="btn btn-primary btn-sm" onclick="openLogInteraction('${c.id}')">Log</button>
+      </div>
+    </div>
+  </div>`;
+}
+
+function reminderCardHTML(c, status) {
+  const due = daysUntilDue(c);
+  const dueText = status==='overdue'
+    ? (due===-9999?'Never contacted':`${Math.abs(due)} day${Math.abs(due)!==1?'s':''} overdue`)
+    : `Due in ${due} day${due!==1?'s':''}`;
+  const lastI=(c.interactions||[]).slice(-1)[0];
+  const cats=(c.categories||[]).slice(0,2).map(cat=>`<span class="cat-badge ${ccClass(cat)}">${esc(cat)}</span>`).join('');
+  const prefI=c.preferredInteraction?itype(c.preferredInteraction):null;
+  return `<div class="reminder-card ${status}">
+    <div class="card-header">
+      <div class="avatar ${avClass(c.name)}">${esc(initials(c.name))}</div>
+      <div class="card-info">
+        <h4>${esc(c.name)}</h4>
+        <p>${lastI?`${itype(lastI.type).icon} ${fmtDate(lastI.date)}`:'No interactions yet'}${c.country?' · '+esc(c.country):''}</p>
+      </div>
+    </div>
+    <div class="card-cats">${cats}${prefI?`<span style="font-size:12px;color:var(--text-muted);margin-left:4px">${prefI.icon} ${prefI.label}</span>`:''}</div>
+    <div class="card-footer">
+      <span class="due-label ${status}">${dueText}</span>
+      <div class="card-footer-right">
+        <button class="btn btn-secondary btn-sm" onclick="openDetail('${c.id}')">View</button>
+        <button class="btn btn-primary btn-sm" onclick="openLogInteraction('${c.id}')">Log</button>
+      </div>
+    </div>
+  </div>`;
+}
+
+function renderContacts() {
+  const contacts=filteredContacts();
+  let label='All Contacts';
+  if(state.filterType==='category')label=state.filterValue;
+  else if(state.filterType==='country')label=state.filterValue;
+  else if(state.filterType==='industry')label=state.filterValue;
+  else if(state.filterType==='tag')label=state.filterValue;
+  else if(state.search)label=`"${state.search}"`;
+
+  let html=`<div style="display:flex;align-items:center;margin-bottom:18px">
+    <div style="font-size:16px;font-weight:600">${esc(label)}
+      <span style="font-weight:400;color:var(--text-muted);font-size:14px"> &mdash; ${contacts.length} contact${contacts.length!==1?'s':''}</span>
+    </div>
+  </div>`;
+
+  if(!contacts.length){
+    html+=`<div class="empty-state"><div class="empty-icon">👋</div><h3>No contacts found</h3><p>Try a different filter or add a new contact.</p><button class="btn btn-primary" onclick="openAddContact()">+ Add Contact</button></div>`;
+  } else {
+    html+=`<div class="card-grid">${contacts.map(contactCardHTML).join('')}</div>`;
+  }
+  document.getElementById('main').innerHTML=html;
+}
+
+function contactCardHTML(c) {
+  const status=contactStatus(c);
+  const due=daysUntilDue(c);
+  const lastI=(c.interactions||[]).slice(-1)[0];
+  const age=calculateAge(c.birthday);
+  const bdDays=daysUntilBirthday(c.birthday);
+  const cats=(c.categories||[]).map(cat=>`<span class="cat-badge ${ccClass(cat)}">${esc(cat)}</span>`).join('');
+  const statusBadge={
+    overdue: `<span class="status-badge status-overdue">Overdue</span>`,
+    upcoming:`<span class="status-badge status-upcoming">Due in ${due}d</span>`,
+    ok:      `<span class="status-badge status-ok">On track</span>`,
+    none:    `<span class="status-badge status-none">No reminder</span>`
+  }[status];
+  const bday = c.celebrateBirthday&&bdDays!==null&&bdDays<=14 ? `<span class="status-badge status-birthday" style="margin-left:4px">🎂 ${bdDays===0?'Today!':'in '+bdDays+'d'}</span>` : '';
+  return `<div class="contact-card" onclick="openDetail('${c.id}')">
+    <div class="card-header">
+      <div class="avatar ${avClass(c.name)}">${esc(initials(c.name))}</div>
+      <div class="card-info">
+        <h4>${esc(c.name)}${age!==null?` <span style="font-size:12px;font-weight:400;color:var(--text-muted)">${age}y</span>`:''}</h4>
+        <p>${c.country?esc(c.country):''}${c.country&&c.industry?' · ':''}${c.industry?esc(c.industry):''}&nbsp;</p>
+      </div>
+    </div>
+    <div class="card-cats">${cats||'<span style="font-size:12px;color:var(--text-muted)">No categories</span>'}</div>
+    <div class="card-footer">
+      <div>${statusBadge}${bday}</div>
+      <span style="font-size:12px;color:var(--text-muted)">${lastI?fmtDate(lastI.date):'No interactions'}</span>
+    </div>
+  </div>`;
+}
+
+// ============================================================
+// MODALS
+// ============================================================
+function closeModal() { document.getElementById('modals').innerHTML=''; }
+function showModal(html) { document.getElementById('modals').innerHTML=html; }
+
+// ============================================================
+// CONTACT DETAIL
+// ============================================================
+function openDetail(id) {
+  const c=db.contacts.find(x=>x.id===id); if(!c)return;
+  _detailTags=[...(c.tags||[])];
+  const status=contactStatus(c);
+  const due=daysUntilDue(c);
+  const age=calculateAge(c.birthday);
+  const bdDays=daysUntilBirthday(c.birthday);
+
+  const statusBadge={
+    overdue: `<span class="status-badge status-overdue">Overdue</span>`,
+    upcoming:`<span class="status-badge status-upcoming">Due in ${due} days</span>`,
+    ok:      `<span class="status-badge status-ok">On track</span>`,
+    none:    `<span class="status-badge status-none">No reminder</span>`
+  }[status];
+
+  const cats=(c.categories||[]).map(cat=>`<span class="cat-badge ${ccClass(cat)}" style="padding:4px 11px">${esc(cat)}</span>`).join('');
+  const tags=_detailTags.map((t,i)=>`<button class="tag-chip" onclick="filterByDetailTag(${i})">${esc(t)}</button>`).join('');
+  const prefI=c.preferredInteraction?itype(c.preferredInteraction):null;
+
+  const sortedI=[...(c.interactions||[])].reverse();
+  const interactionsHTML=sortedI.length===0
+    ?`<div style="font-size:13px;color:var(--text-muted)">No interactions logged yet.</div>`
+    :sortedI.map(i=>`<div class="interaction-item">
+        <div class="interaction-icon">${itype(i.type).icon}</div>
+        <div class="interaction-body">
+          <div class="interaction-type">${esc(itype(i.type).label)}</div>
+          <div class="interaction-date">${fmtDate(i.date)}</div>
+          ${i.notes?`<div class="interaction-notes">${esc(i.notes).replace(/\n/g,'<br>')}</div>`:''}
+        </div>
+        <button class="interaction-delete" onclick="deleteInteraction('${id}','${i.id}')" title="Remove">&#215;</button>
+      </div>`).join('');
+
+  showModal(`<div class="modal-overlay" onclick="if(event.target===this)closeModal()">
+    <div class="modal modal-lg">
+      <div class="modal-header">
+        <div style="display:flex;align-items:center;gap:12px">
+          <div class="avatar avatar-lg ${avClass(c.name)}">${esc(initials(c.name))}</div>
+          <div>
+            <h2>${esc(c.name)}${age!==null?` <span style="font-size:14px;font-weight:400;color:var(--text-muted)">(${age} years old)</span>`:''}</h2>
+            <div style="display:flex;gap:5px;flex-wrap:wrap;margin-top:5px">${cats}</div>
+          </div>
+        </div>
+        <button class="modal-close" onclick="closeModal()">&#215;</button>
+      </div>
+      <div class="modal-body">
+        <div class="detail-grid">
+          <div>
+            <div class="detail-section">
+              <div class="detail-section-title">Contact Info</div>
+              ${c.email    ?`<div class="detail-row"><span class="detail-key">Email</span><span class="detail-val"><a href="mailto:${esc(c.email)}">${esc(c.email)}</a></span></div>`:''}
+              ${c.phone    ?`<div class="detail-row"><span class="detail-key">Phone</span><span class="detail-val"><a href="tel:${esc(c.phone)}">${esc(c.phone)}</a></span></div>`:''}
+              ${c.address  ?`<div class="detail-row"><span class="detail-key">Address</span><span class="detail-val">${esc(c.address).replace(/\n/g,'<br>')}</span></div>`:''}
+              ${c.country  ?`<div class="detail-row"><span class="detail-key">Country</span><span class="detail-val">${esc(c.country)}</span></div>`:''}
+              ${c.industry ?`<div class="detail-row"><span class="detail-key">Industry</span><span class="detail-val">${esc(c.industry)}</span></div>`:''}
+              ${c.birthday ?`<div class="detail-row"><span class="detail-key">Birthday</span><span class="detail-val">${fmtDate(c.birthday)}${age!==null?' · '+age+' years old':''}${c.celebrateBirthday?' 🎂':''}${bdDays!==null&&bdDays<=14&&c.celebrateBirthday?' · <strong style="color:var(--purple)">in '+bdDays+' days</strong>':''}</span></div>`:''}
+              ${c.linkedin ?`<div class="detail-row"><span class="detail-key">LinkedIn</span><span class="detail-val"><a href="${esc(c.linkedin)}" target="_blank">View profile</a></span></div>`:''}
+              ${c.instagram?`<div class="detail-row"><span class="detail-key">Instagram</span><span class="detail-val">@${esc(c.instagram)}</span></div>`:''}
+              ${!c.email&&!c.phone&&!c.address&&!c.country&&!c.industry&&!c.linkedin&&!c.instagram?'<div style="font-size:13px;color:var(--text-muted)">No contact info yet</div>':''}
+            </div>
+            <div class="detail-section">
+              <div class="detail-section-title">Reminder</div>
+              <div class="detail-row"><span class="detail-key">Frequency</span><span class="detail-val">${esc(freqLabel(c.frequency))}</span></div>
+              <div class="detail-row"><span class="detail-key">Status</span>${statusBadge}</div>
+              ${prefI?`<div class="detail-row"><span class="detail-key">Preferred</span><span class="detail-val">${prefI.icon} ${esc(prefI.label)}</span></div>`:''}
+              ${c.frequency?`<div class="detail-row"><span class="detail-key"></span><button class="btn btn-secondary btn-sm" style="margin-top:4px" onclick="downloadICS('${id}')">&#128197; Add to Calendar</button></div>`:''}
+            </div>
+            ${tags?`<div class="detail-section"><div class="detail-section-title">Tags</div><div style="display:flex;flex-wrap:wrap;gap:5px">${tags}</div></div>`:''}
+            ${c.notes?`<div class="detail-section"><div class="detail-section-title">Notes</div><div style="font-size:13.5px;line-height:1.6;color:var(--text-muted)">${esc(c.notes).replace(/\n/g,'<br>')}</div></div>`:''}
+          </div>
+          <div>
+            <div class="detail-section">
+              <div class="detail-section-title">Interaction History (${(c.interactions||[]).length})</div>
+              <div class="interaction-list">${interactionsHTML}</div>
+            </div>
+            <div class="detail-section" style="margin-top:12px">
+              <div class="detail-section-title">Next Interaction Due</div>
+              <div style="display:flex;gap:7px;align-items:center;flex-wrap:wrap">
+                <input type="date" id="nextDueInp" value="${c.nextInteractionDate||''}" style="font-size:13px;padding:6px 10px;border:1px solid var(--border);border-radius:var(--radius);font-family:inherit" />
+                <button class="btn btn-primary btn-sm" onclick="saveNextDue('${id}')">Set date</button>
+                ${c.nextInteractionDate?`<button class="btn btn-ghost btn-sm" onclick="clearNextDue('${id}')">Clear</button>`:''}
+              </div>
+              <div class="form-hint" style="margin-top:5px">${c.nextInteractionDate?'Overrides frequency-based reminder':'Set a specific date — overrides the frequency reminder'}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer modal-footer-split">
+        <button class="btn btn-danger btn-sm" onclick="deleteContact('${id}')">Delete Contact</button>
+        <div style="display:flex;gap:8px">
+          <button class="btn btn-secondary" onclick="openEditContact('${id}')">Edit</button>
+          <button class="btn btn-primary" onclick="openLogInteraction('${id}')">+ Log Interaction</button>
+        </div>
+      </div>
+    </div>
+  </div>`);
+}
+
+// ============================================================
+// ADD / EDIT CONTACT
+// ============================================================
+function openAddContact()    { openContactForm(null); }
+function openEditContact(id) { openContactForm(id); }
+
+function openContactForm(id) {
+  const c=id?db.contacts.find(x=>x.id===id):null;
+  const catPicker=db.categories.map((cat,i)=>`
+    <input class="cat-check" type="checkbox" id="cc${i}" value="${esc(cat)}" ${c&&(c.categories||[]).includes(cat)?'checked':''}>
+    <label class="cat-check-label ${ccClass(cat)}" for="cc${i}">${esc(cat)}</label>`).join('');
+  const freqOpts=FREQ_OPTIONS.map(f=>`<option value="${f.value}" ${c&&c.frequency===f.value?'selected':(!c&&f.value===365?'selected':'')}>${esc(f.label)}</option>`).join('');
+  const intOpts=INTERACTION_TYPES.filter(t=>t.id!=='message').map(t=>`<option value="${t.id}" ${c&&c.preferredInteraction===t.id?'selected':''}>${t.icon} ${esc(t.label)}</option>`).join('');
+  // Birthday: parse existing
+  const bd = parseBirthday(c && c.birthday);
+  const bdM = bd ? bd.month : 0;
+  const bdD = bd ? bd.day : 0;
+  const bdY = (bd && bd.yearKnown) ? bd.year : '';
+  const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  const monthOpts = MONTHS.map((m,i)=>`<option value="${i+1}" ${bdM===i+1?'selected':''}>${m}</option>`).join('');
+  const dayOpts = Array.from({length:31},(_,i)=>`<option value="${i+1}" ${bdD===i+1?'selected':''}>${i+1}</option>`).join('');
+
+  showModal(`<div class="modal-overlay" onclick="if(event.target===this)closeModal()">
+    <div class="modal">
+      <div class="modal-header">
+        <h2>${c?'Edit Contact':'Add Contact'}</h2>
+        <button class="modal-close" onclick="closeModal()">&#215;</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label>Full Name</label>
+          <input type="text" id="fn" placeholder="Jane Smith" value="${c?esc(c.name):''}" />
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Email <span class="opt">(optional)</span></label>
+            <input type="email" id="fe" placeholder="jane@example.com" value="${c&&c.email?esc(c.email):''}" />
+          </div>
+          <div class="form-group">
+            <label>Phone <span class="opt">(optional)</span></label>
+            <input type="tel" id="fp" placeholder="+1 555 000 0000" value="${c&&c.phone?esc(c.phone):''}" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Country <span class="opt">(optional)</span></label>
+            <input type="text" id="fcountry" placeholder="Belgium" value="${c&&c.country?esc(c.country):''}" />
+          </div>
+          <div class="form-group">
+            <label>Industry <span class="opt">(optional)</span></label>
+            <input type="text" id="findustry" placeholder="Medicine" value="${c&&c.industry?esc(c.industry):''}" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Mailing Address <span class="opt">(optional)</span></label>
+          <textarea id="faddress" placeholder="123 Main St, City, Country" style="min-height:56px">${c&&c.address?esc(c.address):''}</textarea>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Birthday <span class="opt">(optional)</span></label>
+            <div style="display:flex;gap:5px">
+              <select id="fbday_m" style="flex:2.2"><option value="">Month</option>${monthOpts}</select>
+              <select id="fbday_d" style="flex:1"><option value="">Day</option>${dayOpts}</select>
+              <input type="number" id="fbday_y" placeholder="Year" min="1900" max="2099" value="${bdY}" style="flex:1.5" />
+            </div>
+            <div class="form-hint">Year is optional</div>
+          </div>
+          <div class="form-group" style="display:flex;align-items:center;gap:10px;padding-top:22px">
+            <input type="checkbox" id="fcelebrate" style="width:16px;height:16px;flex-shrink:0" ${c&&c.celebrateBirthday?'checked':''} onchange="toggleCelebrate()" />
+            <label for="fcelebrate" style="margin-bottom:0;cursor:pointer">Celebrate birthday? <span class="opt">(adds reminder)</span></label>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>LinkedIn URL <span class="opt">(optional)</span></label>
+            <input type="text" id="fli" placeholder="https://linkedin.com/in/..." value="${c&&c.linkedin?esc(c.linkedin):''}" />
+          </div>
+          <div class="form-group">
+            <label>Instagram <span class="opt">(handle, no @)</span></label>
+            <input type="text" id="fig" placeholder="username" value="${c&&c.instagram?esc(c.instagram):''}" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Categories</label>
+          <div class="cat-picker">${catPicker}</div>
+        </div>
+        <div class="form-group tag-suggestions-wrap">
+          <label>Tags <span class="opt">(Enter or comma to add)</span></label>
+          <div class="tags-input-wrap" id="tagsWrap">
+            <input type="text" id="tagIn" placeholder="e.g. close-friend, mentor..." onkeydown="tagKeydown(event)" oninput="showTagSuggestions()" onfocus="showTagSuggestions()" onblur="hideTagSuggestions()" />
+          </div>
+          <div class="tag-suggestions" id="tagSuggestions"></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Reminder Frequency</label>
+            <select id="ffreq">${freqOpts}</select>
+          </div>
+          <div class="form-group">
+            <label>Preferred Interaction</label>
+            <select id="fpref"><option value="">Not specified</option>${intOpts}</select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Notes <span class="opt">(optional)</span></label>
+          <textarea id="fnotes" placeholder="Where did you meet? Context, interests...">${c&&c.notes?esc(c.notes):''}</textarea>
+        </div>
+      </div>
+      <div class="modal-footer modal-footer-split">
+        <label style="display:flex;align-items:center;gap:7px;font-size:13px;cursor:pointer;font-weight:500;color:var(--text-muted)">
+          <input type="checkbox" id="fmarkedComplete" style="width:15px;height:15px" ${c&&c.markedComplete?'checked':''} />
+          Mark as complete
+        </label>
+        <div style="display:flex;gap:8px">
+          <button class="btn btn-secondary" onclick="closeModal()">Cancel</button>
+          <button class="btn btn-primary" onclick="saveContact('${id||''}')">Save Contact</button>
+        </div>
+      </div>
+    </div>
+  </div>`);
+
+  if (c&&c.tags) c.tags.forEach(t=>addTagPill(t));
+  document.getElementById('fn').focus();
+}
+
+function toggleCelebrate() {
+  const checked = document.getElementById('fcelebrate').checked;
+  if (checked && !document.getElementById('fbday_m').value) document.getElementById('fbday_m').focus();
+}
+
+function getAllTagsSorted() {
+  const counts = {};
+  db.contacts.forEach(c => (c.tags||[]).forEach(t => { counts[t]=(counts[t]||0)+1; }));
+  return Object.keys(counts).sort((a,b)=>counts[b]-counts[a]);
+}
+function showTagSuggestions() {
+  const input=document.getElementById('tagIn'), box=document.getElementById('tagSuggestions');
+  if (!input||!box) return;
+  const val=input.value.trim().toLowerCase();
+  const current=getCurrentTags();
+  const suggestions=getAllTagsSorted().filter(t=>!current.includes(t)&&(!val||t.toLowerCase().includes(val)));
+  if (!suggestions.length) { box.innerHTML=''; box.classList.remove('show'); return; }
+  box.innerHTML=suggestions.slice(0,10).map(t=>
+    `<div class="tag-sug-item" onmousedown="event.preventDefault();addTagPill('${esc(t)}');document.getElementById('tagIn').value='';showTagSuggestions()">${esc(t)}</div>`
+  ).join('');
+  box.classList.add('show');
+}
+function hideTagSuggestions() {
+  setTimeout(()=>{ const b=document.getElementById('tagSuggestions'); if(b)b.classList.remove('show'); }, 150);
+}
+
+function tagKeydown(e) { if(e.key==='Enter'||e.key===','){e.preventDefault();commitTag();showTagSuggestions();} }
+function commitTag() { const i=document.getElementById('tagIn'); const v=i.value.trim().replace(/,/g,''); if(!v)return; if(getCurrentTags().includes(v)){i.value='';return;} addTagPill(v); i.value=''; }
+function addTagPill(val) {
+  const wrap=document.getElementById('tagsWrap'), input=document.getElementById('tagIn');
+  const pill=document.createElement('span'); pill.className='tag-pill'; pill.dataset.tag=val;
+  const txt=document.createTextNode(val);
+  const btn=document.createElement('button'); btn.className='tag-pill-remove'; btn.textContent='×'; btn.onclick=()=>pill.remove();
+  pill.appendChild(txt); pill.appendChild(btn); wrap.insertBefore(pill,input);
+}
+function getCurrentTags() { return Array.from(document.querySelectorAll('#tagsWrap .tag-pill')).map(p=>p.dataset.tag); }
+
+async function saveContact(id) {
+  const name=(document.getElementById('fn').value||'').trim();
+  if(!name){alert('Please enter a name.');return;}
+  commitTag();
+  const categories=Array.from(document.querySelectorAll('.cat-check:checked')).map(cb=>cb.value);
+  const tags=getCurrentTags();
+  const frequency=parseInt(document.getElementById('ffreq').value)||0;
+  const existing=id?db.contacts.find(c=>c.id===id):null;
+  const celebrateBirthday = document.getElementById('fcelebrate').checked;
+  const markedComplete = document.getElementById('fmarkedComplete').checked;
+  const bdM = document.getElementById('fbday_m').value;
+  const bdD = document.getElementById('fbday_d').value;
+  const bdY = (document.getElementById('fbday_y').value||'').trim();
+  let birthday = '';
+  if (bdM && bdD) {
+    const year = (bdY && /^\d{4}$/.test(bdY)) ? bdY : '0000';
+    birthday = `${year}-${String(bdM).padStart(2,'0')}-${String(bdD).padStart(2,'0')}`;
+  }
+  if (celebrateBirthday && !birthday) { alert('Please enter at least the month and day (required when "Celebrate birthday?" is checked).'); return; }
+  const contact={
+    id:id||uid(), name,
+    email:    (document.getElementById('fe').value||'').trim(),
+    phone:    (document.getElementById('fp').value||'').trim(),
+    birthday,
+    celebrateBirthday,
+    markedComplete,
+    address:  (document.getElementById('faddress').value||'').trim(),
+    country:  (document.getElementById('fcountry').value||'').trim(),
+    industry: (document.getElementById('findustry').value||'').trim(),
+    linkedin: (document.getElementById('fli').value||'').trim(),
+    instagram:(document.getElementById('fig').value||'').trim(),
+    categories, tags, frequency,
+    preferredInteraction:document.getElementById('fpref').value,
+    notes:(document.getElementById('fnotes').value||'').trim(),
+    createdAt:existing?existing.createdAt:new Date().toISOString().split('T')[0],
+    interactions:existing?existing.interactions:[],
+    nextInteractionDate:existing?existing.nextInteractionDate||'':''
+  };
+  if(id){const idx=db.contacts.findIndex(c=>c.id===id);if(idx!==-1)db.contacts[idx]=contact;}
+  else db.contacts.push(contact);
+  await saveDB(); closeModal(); render();
+  showToast(id?'Contact updated':'Contact added');
+}
+
+// ============================================================
+// LOG INTERACTION
+// ============================================================
+function openLogInteraction(id) {
+  const c=db.contacts.find(x=>x.id===id); if(!c)return;
+  const today=new Date().toISOString().split('T')[0];
+  const intOpts=INTERACTION_TYPES.map(t=>`<option value="${t.id}" ${c.preferredInteraction===t.id?'selected':''}>${t.icon} ${esc(t.label)}</option>`).join('');
+  showModal(`<div class="modal-overlay" onclick="if(event.target===this)closeModal()">
+    <div class="modal modal-sm">
+      <div class="modal-header"><h2>Log Interaction</h2><button class="modal-close" onclick="closeModal()">&#215;</button></div>
+      <div class="modal-body">
+        <div style="display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--surface2);border-radius:8px;margin-bottom:16px">
+          <div class="avatar ${avClass(c.name)}">${esc(initials(c.name))}</div>
+          <div>
+            <div style="font-weight:600;font-size:14px">${esc(c.name)}</div>
+            <div style="font-size:12px;color:var(--text-muted)">${(c.categories||[]).join(' · ')}</div>
+          </div>
+        </div>
+        <div class="form-group"><label>Type of Interaction</label><select id="itype">${intOpts}</select></div>
+        <div class="form-group"><label>Date</label><input type="date" id="idate" value="${today}" /></div>
+        <div class="form-group"><label>Notes <span class="opt">(optional)</span></label><textarea id="inotes" placeholder="What did you talk about? Gift sent?..."></textarea></div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="closeModal()">Cancel</button>
+        <button class="btn btn-primary" onclick="saveInteraction('${id}')">Save</button>
+      </div>
+    </div>
+  </div>`);
+}
+
+async function saveInteraction(contactId) {
+  const c=db.contacts.find(x=>x.id===contactId); if(!c)return;
+  const date=document.getElementById('idate').value;
+  if(!date){alert('Please select a date.');return;}
+  if(!c.interactions)c.interactions=[];
+  c.interactions.push({id:uid(),type:document.getElementById('itype').value,date,notes:(document.getElementById('inotes').value||'').trim()});
+  c.interactions.sort((a,b)=>a.date.localeCompare(b.date));
+  await saveDB(); closeModal(); render(); showToast('Interaction logged');
+}
+
+async function saveNextDue(id) {
+  const c=db.contacts.find(x=>x.id===id); if(!c)return;
+  c.nextInteractionDate=document.getElementById('nextDueInp').value||'';
+  await saveDB(); openDetail(id); render(); showToast('Next interaction date saved');
+}
+async function clearNextDue(id) {
+  const c=db.contacts.find(x=>x.id===id); if(!c)return;
+  c.nextInteractionDate='';
+  await saveDB(); openDetail(id); render(); showToast('Next interaction date cleared');
+}
+
+async function deleteInteraction(contactId, interactionId) {
+  if(!confirm('Remove this interaction?'))return;
+  const c=db.contacts.find(x=>x.id===contactId); if(!c)return;
+  c.interactions=(c.interactions||[]).filter(i=>i.id!==interactionId);
+  await saveDB(); openDetail(contactId); render();
+}
+
+async function deleteContact(id) {
+  const c=db.contacts.find(x=>x.id===id); if(!c)return;
+  if(!confirm(`Delete "${c.name}"? This cannot be undone.`))return;
+  db.contacts=db.contacts.filter(x=>x.id!==id);
+  await saveDB(); closeModal(); render(); showToast('Contact deleted');
+}
+
+// ============================================================
+// MANAGE CATEGORIES
+// ============================================================
+function openManageCategories() { renderManageModal(); }
+function renderManageModal() {
+  showModal(`<div class="modal-overlay" onclick="if(event.target===this)closeModal()">
+    <div class="modal modal-sm">
+      <div class="modal-header"><h2>Manage Categories</h2><button class="modal-close" onclick="closeModal()">&#215;</button></div>
+      <div class="modal-body">
+        <div style="margin-bottom:14px">
+          ${db.categories.map((cat,i)=>{
+            const count=db.contacts.filter(c=>(c.categories||[]).includes(cat)).length;
+            return `<div class="cat-manage-item">
+              <div style="display:flex;align-items:center;gap:8px">
+                <span class="cat-badge ${ccClass(cat)}">${esc(cat)}</span>
+                <span style="font-size:12px;color:var(--text-muted)">${count} contact${count!==1?'s':''}</span>
+              </div>
+              <button class="btn btn-ghost btn-sm" onclick="removeCategory(${i})">Remove</button>
+            </div>`;
+          }).join('')||'<div style="font-size:13px;color:var(--text-muted)">No categories yet</div>'}
+        </div>
+        <div style="display:flex;gap:8px">
+          <input type="text" id="newCat" placeholder="New category name..." style="flex:1" onkeydown="if(event.key==='Enter')addCategory()" />
+          <button class="btn btn-primary" onclick="addCategory()">Add</button>
+        </div>
+      </div>
+      <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal()">Done</button></div>
+    </div>
+  </div>`);
+}
+async function addCategory() {
+  const input=document.getElementById('newCat'); const name=(input.value||'').trim();
+  if(!name)return; if(db.categories.includes(name)){alert('Already exists');return;}
+  db.categories.push(name); await saveDB(); renderManageModal(); renderSidebar();
+}
+async function removeCategory(i) {
+  const cat=db.categories[i];
+  const count=db.contacts.filter(c=>(c.categories||[]).includes(cat)).length;
+  if(count>0&&!confirm(`${count} contact${count!==1?'s are':' is'} in "${cat}". Remove it anyway?`))return;
+  db.categories.splice(i,1); await saveDB(); renderManageModal(); renderSidebar();
+}
+
+// ============================================================
+// CALENDAR (ICS)
+// ============================================================
+function downloadICS(contactId) {
+  const c=db.contacts.find(x=>x.id===contactId); if(!c)return;
+  const daysFrom=Math.max(0,daysUntilDue(c)||0);
+  const eventDate=new Date(); eventDate.setDate(eventDate.getDate()+daysFrom);
+  const pad=n=>String(n).padStart(2,'0');
+  const dt=`${eventDate.getFullYear()}${pad(eventDate.getMonth()+1)}${pad(eventDate.getDate())}`;
+  const prefI=c.preferredInteraction?itype(c.preferredInteraction):null;
+  const ics=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Networkr//EN','BEGIN:VEVENT',`UID:${c.id}@networkr`,`SUMMARY:Reach out to ${c.name}`,`DESCRIPTION:${prefI?prefI.label+' with ':'' }${c.name} — Networkr reminder`,`DTSTART;VALUE=DATE:${dt}`,`DTEND;VALUE=DATE:${dt}`,'END:VEVENT','END:VCALENDAR'].join('\r\n');
+  const blob=new Blob([ics],{type:'text/calendar'});
+  const url=URL.createObjectURL(blob); const a=document.createElement('a');
+  a.href=url; a.download=`remind-${c.name.replace(/\s+/g,'-')}.ics`; a.click(); URL.revokeObjectURL(url);
+}
+
+// ============================================================
+// EXCEL IMPORT
+// ============================================================
+let _excelRows = [];   // parsed rows (array of objects)
+let _excelCols = [];   // column headers from the file
+
+function openExcelImport() {
+  showModal(`<div class="modal-overlay" onclick="if(event.target===this)closeModal()">
+    <div class="modal modal-sm">
+      <div class="modal-header"><h2>Import from Excel / CSV</h2><button class="modal-close" onclick="closeModal()">&#215;</button></div>
+      <div class="modal-body" style="text-align:center;padding:32px 24px">
+        <div style="font-size:48px;margin-bottom:16px">📊</div>
+        <p style="font-size:14px;color:var(--text-muted);margin-bottom:24px;line-height:1.6">
+          Select your Excel (.xlsx, .xls) or CSV file.<br>
+          You'll map your columns to Networkr fields on the next screen.
+        </p>
+        <label class="btn btn-primary" style="cursor:pointer;justify-content:center">
+          Choose File
+          <input type="file" accept=".xlsx,.xls,.csv" style="display:none" onchange="parseExcelFile(event)" />
+        </label>
+        <div style="margin-top:16px;font-size:12px;color:var(--text-muted)">
+          Tip: export from Excel as .xlsx for best results.
+        </div>
+      </div>
+      <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal()">Cancel</button></div>
+    </div>
+  </div>`);
+}
+
+function parseExcelFile(event) {
+  const file=event.target.files[0]; if(!file)return;
+  const reader=new FileReader();
+  reader.onload=e=>{
+    try {
+      const wb=XLSX.read(e.target.result,{type:'array',cellDates:true});
+      const ws=wb.Sheets[wb.SheetNames[0]];
+      const data=XLSX.utils.sheet_to_json(ws,{header:1,defval:''});
+      if(data.length<2){alert('The file appears to be empty.');return;}
+
+      // First row = headers
+      _excelCols=data[0].map(h=>String(h).trim());
+      // Remaining rows = data
+      _excelRows=data.slice(1).filter(row=>row.some(cell=>String(cell).trim()!=='')).map(row=>{
+        const obj={};
+        _excelCols.forEach((col,i)=>{ obj[col]=row[i]!==undefined?String(row[i]).trim():''; });
+        return obj;
+      });
+
+      showMappingModal();
+    } catch(err) { alert('Could not read the file: '+err.message); }
+  };
+  reader.readAsArrayBuffer(file);
+}
+
+// Auto-detect mapping based on column header similarity
+function autoDetectMapping() {
+  const mapping={};
+  const hints={
+    name:       ['name','full name','fullname','nom','contact'],
+    firstName:  ['first name','firstname','prénom','prenom','given name'],
+    lastName:   ['last name','lastname','nom de famille','surname','family name'],
+    email:      ['email','e-mail','mail','courriel'],
+    phone:      ['phone','tel','telephone','mobile','cell','gsm'],
+    birthday:   ['birthday','birth date','birthdate','date of birth','dob','naissance','né le'],
+    country:    ['country','pays','nation','land'],
+    industry:   ['industry','sector','secteur','field','domain','domaine','profession'],
+    linkedin:   ['linkedin','linked in'],
+    instagram:  ['instagram','ig','insta'],
+    categories: ['category','categories','group','groupe'],
+    tags:       ['tags','tag','labels'],
+    notes:      ['notes','note','comment','comments','remarks','bio','description']
+  };
+  _excelCols.forEach(col=>{
+    const lower=col.toLowerCase();
+    for(const[field,keywords]of Object.entries(hints)){
+      if(keywords.some(k=>lower===k||lower.includes(k))){
+        if(!Object.values(mapping).includes(col)) mapping[field]=col;
+        break;
+      }
+    }
+  });
+  return mapping;
+}
+
+function showMappingModal() {
+  const autoMap=autoDetectMapping();
+  const colOptions=['<option value="">— skip this column —</option>',
+    ..._excelCols.map(c=>`<option value="${esc(c)}">${esc(c)}</option>`)].join('');
+
+  const fieldRows=IMPORT_FIELDS.filter(f=>f.id!=='').map(f=>{
+    const autoVal=autoMap[f.id]||'';
+    const opts=['<option value="">— skip —</option>',
+      ..._excelCols.map(c=>`<option value="${esc(c)}" ${autoVal===c?'selected':''}>${esc(c)}</option>`)].join('');
+    return `<tr>
+      <td>${esc(f.label)}</td>
+      <td><select id="map_${f.id}" style="width:100%">${opts}</select></td>
+    </tr>`;
+  }).join('');
+
+  // Preview first 3 rows
+  const previewRows=_excelRows.slice(0,3);
+  const previewHTML=`<table class="preview-table">
+    <tr>${_excelCols.map(c=>`<th>${esc(c)}</th>`).join('')}</tr>
+    ${previewRows.map(row=>`<tr>${_excelCols.map(c=>`<td title="${esc(row[c])}">${esc(row[c])}</td>`).join('')}</tr>`).join('')}
+  </table>`;
+
+  showModal(`<div class="modal-overlay" onclick="if(event.target===this)closeModal()">
+    <div class="modal modal-xl">
+      <div class="modal-header">
+        <h2>Map Columns &mdash; ${_excelRows.length} rows found</h2>
+        <button class="modal-close" onclick="closeModal()">&#215;</button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size:13px;color:var(--text-muted);margin-bottom:14px">
+          Match your Excel columns to Networkr fields. Networkr tried to auto-detect them — adjust as needed.
+        </p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
+          <div>
+            <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--text-muted);margin-bottom:10px">Column Mapping</div>
+            <table class="mapping-table">
+              <tr><th>Networkr Field</th><th>Your Column</th></tr>
+              ${fieldRows}
+            </table>
+          </div>
+          <div>
+            <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--text-muted);margin-bottom:10px">Preview (first 3 rows)</div>
+            <div style="overflow-x:auto">${previewHTML}</div>
+            <div style="margin-top:16px">
+              <div style="font-size:12px;font-weight:600;margin-bottom:6px">On duplicate names:</div>
+              <label style="font-size:13px;display:flex;align-items:center;gap:6px;margin-bottom:4px;font-weight:400">
+                <input type="radio" name="dupPolicy" value="skip" checked /> Skip (keep existing)
+              </label>
+              <label style="font-size:13px;display:flex;align-items:center;gap:6px;font-weight:400">
+                <input type="radio" name="dupPolicy" value="update" /> Update existing contact
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="openExcelImport()">&#8592; Back</button>
+        <button class="btn btn-primary" onclick="runImport()">Import ${_excelRows.length} contacts</button>
+      </div>
+    </div>
+  </div>`);
+}
+
+async function runImport() {
+  const getMap=id=>{const el=document.getElementById('map_'+id); return el?el.value:'';};
+  const dupPolicy=document.querySelector('input[name="dupPolicy"]:checked')?.value||'skip';
+
+  let added=0, updated=0, skipped=0;
+
+  for (const row of _excelRows) {
+    const firstName = getMap('firstName') ? row[getMap('firstName')]||'' : '';
+    const lastName  = getMap('lastName')  ? row[getMap('lastName')]||''  : '';
+    let name = getMap('name') ? row[getMap('name')]||'' : '';
+    if (!name && (firstName||lastName)) name=[firstName,lastName].filter(Boolean).join(' ');
+    name=name.trim();
+    if (!name) { skipped++; continue; }
+
+    // Parse birthday — handle Excel date serials or strings
+    let birthday='';
+    const bdCol=getMap('birthday');
+    if(bdCol&&row[bdCol]){
+      const raw=row[bdCol];
+      // If it's already an ISO string or date string
+      if(/^\d{4}-\d{2}-\d{2}/.test(raw)){
+        birthday=raw.slice(0,10);
+      } else {
+        const d=new Date(raw);
+        if(!isNaN(d.getTime())){
+          birthday=d.toISOString().split('T')[0];
+        }
+      }
+    }
+
+    const catStr=getMap('categories')?row[getMap('categories')]||'':'';
+    const tagStr=getMap('tags')      ?row[getMap('tags')]||''      :'';
+    const categories=catStr?catStr.split(/[,;]+/).map(s=>s.trim()).filter(Boolean):[];
+    const tags      =tagStr?tagStr.split(/[,;]+/).map(s=>s.trim()).filter(Boolean):[];
+
+    const contact={
+      email:    getMap('email')    ?row[getMap('email')]||''    :'',
+      phone:    getMap('phone')    ?row[getMap('phone')]||''    :'',
+      birthday,
+      celebrateBirthday: false,
+      address:  getMap('address') ?row[getMap('address')]||''  :'',
+      country:  getMap('country') ?row[getMap('country')]||''  :'',
+      industry: getMap('industry')?row[getMap('industry')]||'' :'',
+      linkedin: getMap('linkedin')?row[getMap('linkedin')]||'' :'',
+      instagram:getMap('instagram')?row[getMap('instagram')]||'':'',
+      notes:    getMap('notes')   ?row[getMap('notes')]||''    :'',
+      categories, tags,
+      frequency:365, preferredInteraction:''
+    };
+
+    const existingIdx=db.contacts.findIndex(c=>c.name.toLowerCase()===name.toLowerCase());
+    if(existingIdx!==-1){
+      if(dupPolicy==='update'){
+        db.contacts[existingIdx]={...db.contacts[existingIdx],...contact,name};
+        updated++;
+      } else { skipped++; }
+    } else {
+      db.contacts.push({id:uid(), name, ...contact, createdAt:new Date().toISOString().split('T')[0], interactions:[]});
+      added++;
+    }
+  }
+
+  await saveDB(); closeModal(); render();
+  showToast(`Imported: ${added} added, ${updated} updated, ${skipped} skipped`);
+}
+
+// ============================================================
+// INCOMPLETE TAB
+// ============================================================
+function renderIncomplete() {
+  const incompleteContacts = db.contacts.filter(c=>!isComplete(c)).sort((a,b)=>a.name.localeCompare(b.name));
+  const total = db.contacts.length;
+  const completeCount = total - incompleteContacts.length;
+  const pct = total ? Math.round(completeCount/total*100) : 100;
+
+  let html = `<div style="display:flex;align-items:center;gap:12px;margin-bottom:22px;flex-wrap:wrap">
+    <div style="font-size:16px;font-weight:600">Incomplete Profiles
+      <span style="font-weight:400;color:var(--text-muted);font-size:14px"> &mdash; ${incompleteContacts.length} contact${incompleteContacts.length!==1?'s':''} need attention</span>
+    </div>
+    <div style="margin-left:auto;display:flex;align-items:center;gap:8px">
+      <span style="font-size:13px;color:var(--text-muted)">${completeCount}/${total} complete</span>
+      <div class="completeness-bar-wrap"><div class="completeness-bar" style="width:${pct}%"></div></div>
+      <span style="font-size:13px;font-weight:600;color:${pct===100?'var(--success)':'var(--warning)'}">${pct}%</span>
+    </div>
+  </div>`;
+
+  if (!incompleteContacts.length) {
+    html += `<div class="empty-state"><div class="empty-icon">✅</div><h3>All profiles complete!</h3><p>Every contact has all mandatory fields filled in.</p></div>`;
+  } else {
+    html += `<div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden">
+      <table class="incomplete-table">
+        <thead><tr>
+          <th>Name</th>
+          <th>Missing fields</th>
+          <th>Categories</th>
+          <th></th>
+        </tr></thead>
+        <tbody>
+          ${incompleteContacts.map(c=>{
+            const missing = getMissingFields(c);
+            const cats = (c.categories||[]).slice(0,2).map(cat=>`<span class="cat-badge ${ccClass(cat)}">${esc(cat)}</span>`).join(' ');
+            return `<tr onclick="openEditContact('${c.id}')">
+              <td>
+                <div style="display:flex;align-items:center;gap:8px">
+                  <div class="avatar ${avClass(c.name)}" style="width:30px;height:30px;font-size:11px;flex-shrink:0">${esc(initials(c.name))}</div>
+                  <span style="font-weight:600">${esc(c.name)}</span>
+                </div>
+              </td>
+              <td><div style="display:flex;flex-wrap:wrap;gap:4px">${missing.map(f=>`<span class="missing-badge">${esc(f)}</span>`).join('')}</div></td>
+              <td>${cats||'<span style="color:var(--text-muted);font-size:12px">—</span>'}</td>
+              <td><button class="btn btn-secondary btn-sm" onclick="event.stopPropagation();openEditContact('${c.id}')">Edit</button></td>
+            </tr>`;
+          }).join('')}
+        </tbody>
+      </table>
+    </div>`;
+  }
+  document.getElementById('main').innerHTML = html;
+}
+
+// ============================================================
+// CALENDAR TAB
+// ============================================================
+const MONTH_NAMES = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+const DOW_LABELS  = ['Mo','Tu','We','Th','Fr','Sa','Su'];
+
+function buildCalendarEvents(year) {
+  // Returns a map: 'YYYY-MM-DD' -> [{type:'birthday'|'interaction'|'reminder', contact, label}]
+  const events = {};
+  const add = (date, ev) => { if(!events[date])events[date]=[]; events[date].push(ev); };
+  const pad = n => String(n).padStart(2,'0');
+
+  db.contacts.forEach(c => {
+    // Birthdays (celebrateBirthday=true only)
+    if (c.celebrateBirthday && c.birthday) {
+      const b = parseBirthday(c.birthday);
+      if (b) {
+        const dateStr = `${year}-${pad(b.month)}-${pad(b.day)}`;
+        add(dateStr, {type:'birthday', contact:c, label:`🎂 ${c.name}'s birthday`});
+        // Also add 14-day reminder
+        const reminderDate = new Date(year, b.month-1, b.day-14);
+        const rStr = `${reminderDate.getFullYear()}-${pad(reminderDate.getMonth()+1)}-${pad(reminderDate.getDate())}`;
+        if (reminderDate.getFullYear()===year)
+          add(rStr, {type:'reminder', contact:c, label:`⏰ Birthday reminder: ${c.name} (in 14 days)`});
+      }
+    }
+
+    // Past interactions
+    (c.interactions||[]).forEach(i => {
+      if (i.date && i.date.startsWith(String(year))) {
+        add(i.date, {type:'interaction', contact:c, label:`${itype(i.type).icon} ${c.name}: ${itype(i.type).label}`});
+      }
+    });
+
+    // Future reminder due dates
+    if (c.frequency) {
+      const due = daysUntilDue(c);
+      if (due !== null && due >= 0) {
+        const dueDate = new Date();
+        dueDate.setDate(dueDate.getDate()+due);
+        if (dueDate.getFullYear()===year) {
+          const dStr = `${year}-${pad(dueDate.getMonth()+1)}-${pad(dueDate.getDate())}`;
+          add(dStr, {type:'reminder', contact:c, label:`⏰ Reach out: ${c.name}`});
+        }
+      }
+    }
+  });
+  return events;
+}
+
+function renderCalendar() {
+  const year = state.calendarYear;
+  const events = buildCalendarEvents(year);
+  const todayStr = new Date().toISOString().split('T')[0];
+
+  let monthsHTML = '';
+  for (let m = 0; m < 12; m++) {
+    const firstDay = new Date(year, m, 1);
+    const daysInMonth = new Date(year, m+1, 0).getDate();
+    // Monday-first offset: getDay() returns 0=Sun,1=Mon...6=Sat; we want Mon=0
+    let startOffset = (firstDay.getDay()+6)%7; // 0=Mon
+
+    let daysHTML = '';
+    for (let f=0; f<startOffset; f++) daysHTML += `<div class="cal-day filler"></div>`;
+
+    for (let d=1; d<=daysInMonth; d++) {
+      const pad = n=>String(n).padStart(2,'0');
+      const dateStr = `${year}-${pad(m+1)}-${pad(d)}`;
+      const dayEvents = events[dateStr]||[];
+      const isToday = dateStr===todayStr;
+
+      const dots = [...new Set(dayEvents.map(e=>e.type))].map(t=>
+        `<div class="cal-dot cal-dot-${t}"></div>`
+      ).join('');
+
+      const hasEv = dayEvents.length>0;
+      daysHTML += `<div class="cal-day ${isToday?'today':''} ${hasEv?'has-events':''}"
+        ${hasEv?`onclick="openDayDetail('${dateStr}')"`:''}>
+        <div class="cal-day-num">${d}</div>
+        ${dots?`<div class="cal-dots">${dots}</div>`:''}
+      </div>`;
+    }
+
+    monthsHTML += `<div class="cal-month">
+      <div class="cal-month-title">${MONTH_NAMES[m]}</div>
+      <div class="cal-dow-row">${DOW_LABELS.map(d=>`<div>${d}</div>`).join('')}</div>
+      <div class="cal-days">${daysHTML}</div>
+    </div>`;
+  }
+
+  // Legend
+  const legend = `<div style="display:flex;gap:16px;margin-bottom:18px;flex-wrap:wrap;font-size:12.5px;align-items:center">
+    <div style="display:flex;align-items:center;gap:5px"><div class="cal-dot cal-dot-birthday" style="width:10px;height:10px"></div> Birthday</div>
+    <div style="display:flex;align-items:center;gap:5px"><div class="cal-dot cal-dot-interaction" style="width:10px;height:10px"></div> Past interaction</div>
+    <div style="display:flex;align-items:center;gap:5px"><div class="cal-dot cal-dot-reminder" style="width:10px;height:10px"></div> Upcoming reminder / birthday alert</div>
+  </div>`;
+
+  document.getElementById('main').innerHTML = `
+    <div class="cal-year-nav">
+      <button class="btn btn-secondary btn-sm" onclick="state.calendarYear--;renderCalendar()">&#8592;</button>
+      <h2>${year}</h2>
+      <button class="btn btn-secondary btn-sm" onclick="state.calendarYear++;renderCalendar()">&#8594;</button>
+      <button class="btn btn-ghost btn-sm" onclick="state.calendarYear=new Date().getFullYear();renderCalendar()">Today</button>
+    </div>
+    ${legend}
+    <div class="cal-grid-months">${monthsHTML}</div>
+  `;
+}
+
+let _calDayEvents = [];
+function openDayDetail(dateStr) {
+  const events = buildCalendarEvents(state.calendarYear);
+  _calDayEvents = events[dateStr]||[];
+  if (!_calDayEvents.length) return;
+
+  const d = new Date(dateStr+'T00:00:00');
+  const title = d.toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+
+  const evHTML = _calDayEvents.map(ev=>`
+    <div style="display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--surface2);border-radius:8px;margin-bottom:6px">
+      <div class="avatar ${avClass(ev.contact.name)}" style="width:32px;height:32px;font-size:11px;flex-shrink:0">${esc(initials(ev.contact.name))}</div>
+      <div style="flex:1">
+        <div style="font-size:13.5px;font-weight:600">${esc(ev.label)}</div>
+        <div style="font-size:12px;color:var(--text-muted)">${(ev.contact.categories||[]).join(' · ')||'No categories'}</div>
+      </div>
+      <button class="btn btn-secondary btn-sm" onclick="closeModal();openDetail('${ev.contact.id}')">View</button>
+    </div>`).join('');
+
+  showModal(`<div class="modal-overlay" onclick="if(event.target===this)closeModal()">
+    <div class="modal modal-sm">
+      <div class="modal-header">
+        <h2>${esc(title)}</h2>
+        <button class="modal-close" onclick="closeModal()">&#215;</button>
+      </div>
+      <div class="modal-body">${evHTML}</div>
+      <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal()">Close</button></div>
+    </div>
+  </div>`);
+}
+
+// ============================================================
+// BOOT
+// ============================================================
+init();
+</script>
+</body>
+</html>

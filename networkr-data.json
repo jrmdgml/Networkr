@@ -1,0 +1,2336 @@
+{
+  "contacts": [
+    {
+      "id": "s001",
+      "name": "Alexandre Laduron",
+      "email": "",
+      "phone": "",
+      "birthday": "1990-12-05",
+      "country": "Belgium",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "UCL"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s002",
+      "name": "Romain Lacrosse",
+      "email": "",
+      "phone": "",
+      "birthday": "",
+      "country": "Belgium",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "UCL"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s003",
+      "name": "Bastien Bonnave",
+      "email": "",
+      "phone": "",
+      "birthday": "1990-10-03",
+      "country": "Belgium",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "UCL"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s004",
+      "name": "Olivier Grevesse",
+      "email": "",
+      "phone": "",
+      "birthday": "",
+      "country": "Belgium",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "UCL"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s005",
+      "name": "Marie-Laure Labaki",
+      "email": "",
+      "phone": "",
+      "birthday": "",
+      "country": "Belgium",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "UCL"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s006",
+      "name": "Thibaut Sarolea",
+      "email": "",
+      "phone": "",
+      "birthday": "1993-12-17",
+      "country": "Belgium",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "UCL"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s007",
+      "name": "Jerome Hurlet",
+      "email": "",
+      "phone": "",
+      "birthday": "1993-03-01",
+      "celebrateBirthday": true,
+      "address": "",
+      "country": "Belgium",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "UCL"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s008",
+      "name": "Emile Brandt",
+      "email": "",
+      "phone": "",
+      "birthday": "",
+      "country": "Belgium",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "UCL"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s009",
+      "name": "Claire Beaufays",
+      "email": "",
+      "phone": "",
+      "birthday": "",
+      "country": "Belgium",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "UCL"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s010",
+      "name": "François Delcourt",
+      "email": "",
+      "phone": "",
+      "birthday": "",
+      "country": "Belgium",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "UCL"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s011",
+      "name": "Hervé Simons",
+      "email": "",
+      "phone": "",
+      "birthday": "",
+      "country": "Belgium",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "UCL"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s012",
+      "name": "Nils Préat",
+      "email": "",
+      "phone": "",
+      "birthday": "1992-10-23",
+      "country": "Belgium",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "Solvay"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s013",
+      "name": "Morganne De Halleux",
+      "email": "",
+      "phone": "",
+      "birthday": "",
+      "country": "Belgium",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "Solvay"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s014",
+      "name": "Edouard BasPerez",
+      "email": "",
+      "phone": "",
+      "birthday": "",
+      "country": "Belgium",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "Solvay"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s015",
+      "name": "Margaux Van Haren",
+      "email": "",
+      "phone": "",
+      "birthday": "",
+      "country": "Belgium",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "Solvay"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s016",
+      "name": "Corentin Van Haren",
+      "email": "",
+      "phone": "",
+      "birthday": "",
+      "country": "Belgium",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "Solvay"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s017",
+      "name": "Julien Luyten",
+      "email": "",
+      "phone": "",
+      "birthday": "1992-08-06",
+      "country": "Belgium",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "Solvay"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s018",
+      "name": "Gregoire Lebrun",
+      "email": "",
+      "phone": "",
+      "birthday": "1995-01-26",
+      "country": "Belgium",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "Solvay"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s019",
+      "name": "Nicolas DW",
+      "email": "",
+      "phone": "",
+      "birthday": "",
+      "country": "Belgium",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "Solvay"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s020",
+      "name": "Alice Brulard",
+      "email": "",
+      "phone": "",
+      "birthday": "",
+      "country": "Belgium",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "Solvay"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s021",
+      "name": "Simon Van Der Veyver",
+      "email": "",
+      "phone": "",
+      "birthday": "1986-10-19",
+      "country": "Belgium",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "Solvay"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s022",
+      "name": "Gauthier Bechet",
+      "email": "",
+      "phone": "",
+      "birthday": "1989-10-20",
+      "country": "Belgium",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "Solvay"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s023",
+      "name": "Thomas Jacob",
+      "email": "",
+      "phone": "",
+      "birthday": "1992-05-08",
+      "country": "Belgium",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "Thimister"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s024",
+      "name": "David Meyer",
+      "email": "",
+      "phone": "",
+      "birthday": "1992-11-08",
+      "country": "Belgium",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "Thimister"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s025",
+      "name": "Axelle Loupe",
+      "email": "",
+      "phone": "",
+      "birthday": "",
+      "country": "Belgium",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "Thimister"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s026",
+      "name": "Nicolas Greaevenitz",
+      "email": "",
+      "phone": "",
+      "birthday": "",
+      "country": "Belgium",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "Thimister"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s027",
+      "name": "Denis Coeymans",
+      "email": "",
+      "phone": "",
+      "birthday": "1992-07-12",
+      "country": "Belgium",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "Thimister"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s028",
+      "name": "Juliette Campionne",
+      "email": "",
+      "phone": "",
+      "birthday": "",
+      "country": "Belgium",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "Thimister"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s029",
+      "name": "Catherine Zinnen",
+      "email": "",
+      "phone": "",
+      "birthday": "",
+      "country": "Belgium",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "Thimister"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s030",
+      "name": "Charline Ramet",
+      "email": "",
+      "phone": "",
+      "birthday": "1992-07-09",
+      "country": "Belgium",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "Thimister"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s031",
+      "name": "Thibaut Lejeune",
+      "email": "",
+      "phone": "",
+      "birthday": "",
+      "country": "Belgium",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "Thimister"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s032",
+      "name": "Lola Henrard",
+      "email": "",
+      "phone": "",
+      "birthday": "",
+      "country": "Belgium",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "Thimister"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s033",
+      "name": "Cecile Opdelocht",
+      "email": "",
+      "phone": "",
+      "birthday": "",
+      "country": "Belgium",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "Thimister"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s034",
+      "name": "Alexis Genicot",
+      "email": "",
+      "phone": "",
+      "birthday": "",
+      "country": "Belgium",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "Thimister"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s035",
+      "name": "Olivier Romeo",
+      "email": "",
+      "phone": "",
+      "birthday": "1992-02-26",
+      "country": "Belgium",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "Thimister"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s036",
+      "name": "Martin Lambot",
+      "email": "",
+      "phone": "",
+      "birthday": "1992-06-18",
+      "country": "Belgium",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "Thimister"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s037",
+      "name": "Bastien Godefroid",
+      "email": "",
+      "phone": "",
+      "birthday": "1992-06-15",
+      "country": "Belgium",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "Thimister"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s038",
+      "name": "Etienne Jacob",
+      "email": "",
+      "phone": "",
+      "birthday": "",
+      "country": "Belgium",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "Thimister"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s039",
+      "name": "Elsa Cabergs",
+      "email": "",
+      "phone": "",
+      "birthday": "",
+      "country": "Belgium",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "Thimister"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s040",
+      "name": "Caroline Janssen",
+      "email": "",
+      "phone": "",
+      "birthday": "",
+      "country": "Belgium",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "Thimister"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s041",
+      "name": "Regis Van Aubel",
+      "email": "",
+      "phone": "",
+      "birthday": "",
+      "country": "Belgium",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "Thimister"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s042",
+      "name": "Ilhan Torun",
+      "email": "",
+      "phone": "",
+      "birthday": "",
+      "country": "Belgium",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "Thimister"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s043",
+      "name": "Victor Job",
+      "email": "",
+      "phone": "",
+      "birthday": "",
+      "country": "Belgium",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "Thimister"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s044",
+      "name": "Julien Job",
+      "email": "",
+      "phone": "",
+      "birthday": "",
+      "country": "Belgium",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "Thimister"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s045",
+      "name": "Laurent Vanderstraten",
+      "email": "",
+      "phone": "",
+      "birthday": "",
+      "country": "Belgium",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "Thimister"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s046",
+      "name": "Julien Vanderstraten",
+      "email": "",
+      "phone": "",
+      "birthday": "",
+      "country": "Belgium",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "Thimister"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s047",
+      "name": "Clément Weber",
+      "email": "",
+      "phone": "",
+      "birthday": "",
+      "country": "Belgium",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "Thimister"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s048",
+      "name": "Adrien Demez",
+      "email": "",
+      "phone": "",
+      "birthday": "",
+      "country": "Belgium",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "Thimister"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s049",
+      "name": "Manon Formatin",
+      "email": "",
+      "phone": "",
+      "birthday": "",
+      "country": "Belgium",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "Thimister"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s050",
+      "name": "Gaetan Ernest",
+      "email": "",
+      "phone": "",
+      "birthday": "",
+      "country": "Belgium",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "Thimister"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s051",
+      "name": "Marvin Ernst",
+      "email": "",
+      "phone": "",
+      "birthday": "",
+      "country": "Belgium",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "Thimister"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s052",
+      "name": "Jonathan Ernst",
+      "email": "",
+      "phone": "",
+      "birthday": "",
+      "country": "Belgium",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "Thimister"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s053",
+      "name": "Antoine Detry",
+      "email": "",
+      "phone": "",
+      "birthday": "",
+      "country": "Belgium",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "Thimister"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s054",
+      "name": "Thomas Ruwet",
+      "email": "",
+      "phone": "",
+      "birthday": "",
+      "country": "Belgium",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "Thimister"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s055",
+      "name": "Nicolas Ruwet",
+      "email": "",
+      "phone": "",
+      "birthday": "",
+      "country": "Belgium",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "Thimister"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s056",
+      "name": "Emile Ruwet",
+      "email": "",
+      "phone": "",
+      "birthday": "",
+      "country": "Belgium",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "Thimister"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s057",
+      "name": "Marc-Olivier Pelsser",
+      "email": "",
+      "phone": "",
+      "birthday": "",
+      "country": "Belgium",
+      "industry": "Medicine",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "Medecine"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s058",
+      "name": "Eric Manche",
+      "email": "",
+      "phone": "",
+      "birthday": "",
+      "country": "Belgium",
+      "industry": "Medicine",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "Medecine"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s059",
+      "name": "Catherine Morimont",
+      "email": "",
+      "phone": "",
+      "birthday": "",
+      "country": "Belgium",
+      "industry": "Medicine",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "Medecine"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s060",
+      "name": "Bernard Geulette",
+      "email": "",
+      "phone": "",
+      "birthday": "",
+      "country": "Belgium",
+      "industry": "Medicine",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "Medecine"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s061",
+      "name": "Valery Fabre",
+      "email": "",
+      "phone": "",
+      "birthday": "",
+      "country": "Belgium",
+      "industry": "Medicine",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "Medecine"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s062",
+      "name": "Jacques De Halleux",
+      "email": "",
+      "phone": "",
+      "birthday": "",
+      "country": "Belgium",
+      "industry": "Medicine",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "Medecine"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s063",
+      "name": "Anthony Ramirez",
+      "email": "",
+      "phone": "",
+      "birthday": "",
+      "country": "USA",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "MIT"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "Birthday: Jan 7 (year unknown)",
+      "createdAt": "2026-03-22",
+      "interactions": [
+        {
+          "id": "mn2istce2nofn6s3xvq",
+          "type": "phone",
+          "date": "2026-03-23",
+          "notes": "about copilot"
+        }
+      ]
+    },
+    {
+      "id": "s064",
+      "name": "Giacomo Corti",
+      "email": "",
+      "phone": "",
+      "birthday": "",
+      "country": "Italy",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "MIT"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "Birthday: Jan 7 (year unknown)",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s065",
+      "name": "Abdullah Al-Dhalaan",
+      "email": "",
+      "phone": "",
+      "birthday": "",
+      "country": "Saudi Arabia",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "MIT"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "Birthday: Jan 14 (year unknown)",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s066",
+      "name": "Teresita Baeza",
+      "email": "",
+      "phone": "",
+      "birthday": "",
+      "country": "Chile",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "MIT"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "Birthday: Jan 15 (year unknown)",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s067",
+      "name": "Robert Jones",
+      "email": "",
+      "phone": "",
+      "birthday": "",
+      "country": "USA",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "MIT"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "Birthday: Feb 17 (year unknown)",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s068",
+      "name": "Katie Sessa",
+      "email": "",
+      "phone": "",
+      "birthday": "",
+      "country": "USA",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "MIT"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "Birthday: Feb 23 (year unknown)",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s069",
+      "name": "Dominique Johnson",
+      "email": "",
+      "phone": "",
+      "birthday": "",
+      "country": "USA",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "MIT"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "Birthday: Mar 14 (year unknown)",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s070",
+      "name": "Mathieu Bourgignon",
+      "email": "",
+      "phone": "",
+      "birthday": "",
+      "country": "France",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "MIT"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "Birthday: Apr 3 (year unknown)",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s071",
+      "name": "Shubhangi Rana",
+      "email": "",
+      "phone": "",
+      "birthday": "",
+      "country": "Nepal",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "MIT"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "Birthday: April (day and year unknown)",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s072",
+      "name": "Emma Larson",
+      "email": "",
+      "phone": "",
+      "birthday": "",
+      "country": "USA",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "MIT"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "Birthday: May 17 (year unknown)",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s073",
+      "name": "Trenton Lam",
+      "email": "",
+      "phone": "",
+      "birthday": "",
+      "country": "USA",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "MIT"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "Birthday: May 20 (year unknown)",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s074",
+      "name": "Roy Reinhorn",
+      "email": "",
+      "phone": "",
+      "birthday": "1993-07-07",
+      "country": "USA",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "MIT"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s075",
+      "name": "Javier Bello",
+      "email": "",
+      "phone": "",
+      "birthday": "",
+      "country": "Colombia",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "MIT"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "Birthday: Jul 12 (year unknown)",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s076",
+      "name": "Juliana Aucoin",
+      "email": "",
+      "phone": "",
+      "birthday": "",
+      "country": "USA",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "MIT"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "Birthday: Jul 20 (year unknown)",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s077",
+      "name": "Dhruv Bathla",
+      "email": "",
+      "phone": "",
+      "birthday": "",
+      "country": "India",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "MIT"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "Birthday: Jul 28 (year unknown)",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s078",
+      "name": "Manuel Esparragoza",
+      "email": "",
+      "phone": "",
+      "birthday": "",
+      "country": "USA",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "MIT"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "Birthday: Sep 12 (year unknown)",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s079",
+      "name": "Dayquan Julienne",
+      "email": "",
+      "phone": "",
+      "birthday": "",
+      "celebrateBirthday": false,
+      "address": "",
+      "country": "USA",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "MIT"
+      ],
+      "tags": [
+        "test",
+        "test2"
+      ],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "Birthday: Oct 6 (year unknown)",
+      "createdAt": "2026-03-22",
+      "interactions": [
+        {
+          "id": "mn2itej1zpsg7k72xda",
+          "type": "phone",
+          "date": "2026-03-13",
+          "notes": "about cocopilot"
+        }
+      ]
+    },
+    {
+      "id": "s080",
+      "name": "Wendi Guraziu",
+      "email": "",
+      "phone": "",
+      "birthday": "",
+      "country": "USA",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "MIT"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "Birthday: Oct 22 (year unknown)",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s081",
+      "name": "Luke Turtora",
+      "email": "",
+      "phone": "",
+      "birthday": "",
+      "country": "USA",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "MIT"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "Birthday: Nov 1 (year unknown)",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s082",
+      "name": "Ibrahim Al-Ibrahim",
+      "email": "",
+      "phone": "",
+      "birthday": "1993-11-16",
+      "country": "Saudi Arabia",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "MIT"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s083",
+      "name": "Lucrecia Siman",
+      "email": "",
+      "phone": "",
+      "birthday": "",
+      "country": "El Salvador",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "MIT"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "Birthday: Nov 26 (year unknown)",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s084",
+      "name": "Chris Crouch",
+      "email": "",
+      "phone": "",
+      "birthday": "",
+      "country": "USA",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "MIT"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "Birthday: Dec 28 (year unknown)",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s085",
+      "name": "Rupen Dajee",
+      "email": "",
+      "phone": "",
+      "birthday": "1991-12-31",
+      "country": "USA",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "MIT"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s086",
+      "name": "JJ Daboub",
+      "email": "",
+      "phone": "",
+      "birthday": "",
+      "country": "El Salvador",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "MIT"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s087",
+      "name": "Lilly Kang",
+      "email": "",
+      "phone": "+1 2152843572",
+      "birthday": "",
+      "country": "",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "Harvard"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s088",
+      "name": "Aashna Shaparia",
+      "email": "",
+      "phone": "+1 9295947062",
+      "birthday": "",
+      "country": "",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "Harvard"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s089",
+      "name": "Amine Mernissi",
+      "email": "",
+      "phone": "+33 663872227",
+      "birthday": "",
+      "country": "",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "Harvard"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s090",
+      "name": "Justin Kan",
+      "email": "",
+      "phone": "+1 6262978143",
+      "birthday": "",
+      "country": "",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "Harvard"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s091",
+      "name": "Kasha",
+      "email": "",
+      "phone": "+49 15127526888",
+      "birthday": "",
+      "country": "",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "Harvard"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s092",
+      "name": "Lingling Jian",
+      "email": "",
+      "phone": "+1 7818179861",
+      "birthday": "",
+      "country": "",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "Harvard"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s093",
+      "name": "Nick Maynes",
+      "email": "",
+      "phone": "+1 9152037699",
+      "birthday": "",
+      "country": "",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "Harvard"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s094",
+      "name": "Nikolas Neos",
+      "email": "",
+      "phone": "+30 69773057971",
+      "birthday": "",
+      "country": "",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "Harvard"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s095",
+      "name": "Patricia Matias",
+      "email": "",
+      "phone": "+1 6172518207",
+      "birthday": "",
+      "country": "",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "Harvard"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s096",
+      "name": "Abhishek Senapati",
+      "email": "",
+      "phone": "+1 6033597794",
+      "birthday": "",
+      "country": "",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "Harvard"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s097",
+      "name": "Austin Miller",
+      "email": "",
+      "phone": "+1 9109642752",
+      "birthday": "",
+      "country": "USA",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "Harvard"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s098",
+      "name": "Brandon Huang",
+      "email": "",
+      "phone": "+1 9492789293",
+      "birthday": "",
+      "country": "",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "Harvard"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s099",
+      "name": "Hilary Greenberg",
+      "email": "",
+      "phone": "+1 339220444",
+      "birthday": "",
+      "country": "",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "Harvard"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s100",
+      "name": "Jeanne Pidoux",
+      "email": "",
+      "phone": "+1 6172518902",
+      "birthday": "",
+      "country": "",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "Harvard"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s101",
+      "name": "Joy Liu",
+      "email": "",
+      "phone": "+1 6505196891",
+      "birthday": "",
+      "country": "",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "Harvard"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s102",
+      "name": "Kimihiro Nakamura",
+      "email": "",
+      "phone": "+81 8066319888",
+      "birthday": "",
+      "country": "Japan",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "Harvard"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s103",
+      "name": "Liudmyla Kurnosikova",
+      "email": "",
+      "phone": "+49 15252658200",
+      "birthday": "",
+      "country": "",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "Harvard"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s104",
+      "name": "Mo",
+      "email": "",
+      "phone": "+1 9293946551",
+      "birthday": "",
+      "country": "",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "Harvard"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s105",
+      "name": "Nancy Hinojos",
+      "email": "",
+      "phone": "+1 3104270091",
+      "birthday": "",
+      "country": "",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "Harvard"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s106",
+      "name": "Qixuan Liu",
+      "email": "",
+      "phone": "+1 6506706974",
+      "birthday": "",
+      "country": "",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "Harvard"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s107",
+      "name": "Shelby Wailes",
+      "email": "",
+      "phone": "+1 7607167074",
+      "birthday": "",
+      "country": "",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "Harvard"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s108",
+      "name": "Taha",
+      "email": "",
+      "phone": "+1 2675762657",
+      "birthday": "",
+      "country": "",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "Harvard"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s109",
+      "name": "Vikki",
+      "email": "",
+      "phone": "+49 15755810986",
+      "birthday": "",
+      "country": "",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "Harvard"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s110",
+      "name": "Zerlinda Ma",
+      "email": "",
+      "phone": "+1 6179028499",
+      "birthday": "",
+      "country": "",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "Harvard"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s111",
+      "name": "Sonya",
+      "email": "",
+      "phone": "+1 6467755849",
+      "birthday": "",
+      "country": "",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "Harvard"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s112",
+      "name": "Irwin",
+      "email": "",
+      "phone": "+1 6507967371",
+      "birthday": "",
+      "country": "",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "Harvard"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s113",
+      "name": "Cheriff",
+      "email": "",
+      "phone": "",
+      "birthday": "",
+      "country": "",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "Harvard"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s114",
+      "name": "Claudia Hill",
+      "email": "",
+      "phone": "",
+      "birthday": "",
+      "country": "",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "Harvard"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    },
+    {
+      "id": "s115",
+      "name": "Amrit Sandhu",
+      "email": "",
+      "phone": "",
+      "birthday": "",
+      "country": "",
+      "industry": "",
+      "linkedin": "",
+      "instagram": "",
+      "categories": [
+        "Harvard"
+      ],
+      "tags": [],
+      "frequency": 365,
+      "preferredInteraction": "",
+      "notes": "",
+      "createdAt": "2026-03-22",
+      "interactions": []
+    }
+  ],
+  "categories": [
+    "UCL",
+    "Solvay",
+    "Thimister",
+    "Medecine",
+    "MIT",
+    "Harvard"
+  ],
+  "settings": {
+    "reminderLeadDays": 30
+  }
+}
